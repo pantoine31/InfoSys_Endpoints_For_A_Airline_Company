@@ -201,3 +201,8 @@
   
   ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/7f9b198a-ccb4-4dfa-83c4-831c5df02c12)
 
+      - Αν πάμε να ξαναπροσθέσουμε τον ίδιο χρήστη , τότε:
+       (Βγάζει error για το ίδιο email καθώς στον κώδικα το email ελέγχεται για το εάν υπάρχει , πρώτο)
+       
+   ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/e2eddb09-bdcc-4442-b404-07ad0fe41a1f)
+
