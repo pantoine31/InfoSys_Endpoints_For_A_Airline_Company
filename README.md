@@ -180,5 +180,15 @@
         }
         
         
-2) 
+2) Αν ο χρήστης που πάμε να προσθέσουμε έχει το ίδιο email με κάποιον άλλον χρήστη τότε μας εμφανίζεται το ακόλουθο μήνυμα όταν πατάμε SEND:
 
+    {
+        "Message": "User with the same email already exists. Try for an other email."
+    }
+
+3) Αν ο χρήστης που πάμε να προσθέσουμε έχει το ίδιο username με κάποιον άλλον χρήστη τότε μας εμφανίζεται το ακόλουθο μήνυμα όταν πατάμε SEND:
+
+
+    {
+        "Message": "Username is already in Use. Try with an other Username."
+    }
