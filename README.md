@@ -174,21 +174,21 @@
 
 1) Εφόσον πάνε όλα καλά θα μας εμφανίστεί το ακόλουθο μήνυμα:
 
-        {
-            "New user has user_id": "6483553f7c30ffff318f90e9",
-            "message": "A new user has been successfully registered! Welcome to our family!"
-        }
+            {
+                "New user has user_id": "6483553f7c30ffff318f90e9",
+                "message": "A new user has been successfully registered! Welcome to our family!"
+            }
         
         
 2) Αν ο χρήστης που πάμε να προσθέσουμε έχει το ίδιο email με κάποιον άλλον χρήστη τότε μας εμφανίζεται το ακόλουθο μήνυμα όταν πατάμε SEND:
 
-    {
-        "Message": "User with the same email already exists. Try for an other email."
-    }
+            {
+                "Message": "User with the same email already exists. Try for an other email."
+            }
 
 3) Αν ο χρήστης που πάμε να προσθέσουμε έχει το ίδιο username με κάποιον άλλον χρήστη τότε μας εμφανίζεται το ακόλουθο μήνυμα όταν πατάμε SEND:
 
 
-    {
-        "Message": "Username is already in Use. Try with an other Username."
-    }
+            {
+                "Message": "Username is already in Use. Try with an other Username."
+            }
