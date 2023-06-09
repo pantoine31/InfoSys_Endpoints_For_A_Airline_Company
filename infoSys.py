@@ -9,6 +9,7 @@ from pymongo import MongoClient
 app = Flask(__name__)
 
 client = MongoClient('mongodb://localhost:27017/')
+
 db = client['DigitalAirlines']
 users_collection = db['usernames']
 
@@ -33,12 +34,12 @@ def register():
     # Check for existing user with the same email
     existing_user = users_collection.find_one({'email': email})
     if existing_user:
-        return jsonify({'message': 'User with the same email already exists'}), 400
+        return jsonify({'Message': 'User with the same email already exists. Try for an other email.'}), 400
 
     # Check for existing user with the same username
     existing_user = users_collection.find_one({'username': username})
     if existing_user:
-        return jsonify({'message': 'Username is already taken'}), 400
+        return jsonify({'Message': 'Username is already in Use. Try with an other Username.'}), 400
 
     # Create a new user
     new_user = {
@@ -54,7 +55,7 @@ def register():
     # Insert the new user into the database
     result = users_collection.insert_one(new_user)
 
-    return jsonify({'message': 'New user has been successfully registered', 'user_id': str(result.inserted_id)}), 200
-
+    return jsonify({'message': 'A new user has been successfully registered! Welcome to our family!', 'New user has user_id': str(result.inserted_id)}), 200
+# η συνεχεια αυριο
 if __name__ == '__main__':
  app.run(debug=True, host='0.0.0.0', port=5000)
