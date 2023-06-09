@@ -137,14 +137,72 @@
 
 
 # Βήματα για την χρήση του postman στη δική μου εργασία
+- Θα γίνει η επεξήγηση του endpoint για το /register. Όλα τα υπόλοιπα ακολουθούν την ίδια λογική , και για εξοικονόμηση χρόνου- χώρου θα γίνει η επέξηγηση μόνο για το 1.
 
-- Βήμα 1: 
+  - Βήμα 1: Καταβάζουμε την εφαρμογή του Postman από εδώ: https://www.postman.com/downloads/ Μόλις κατέβει , δεν χρειάζεται κάποια εγγραφή , προχωράμε χωρίς εγγραφή στο πρόγραμμα.
 
-- Βήμα 2: 
+  - Βήμα 2: Πάνω - Πάνω μας έχει μία μπάρα η οποία δέχεται URL's καθώς και το αντίστοιχο αίτημα. Τρέχουμε λοιπόν το αρχείο μας infoSys , είτε με διπλό κλικ , είτε με την εντολή python infoSys.py , σε κάποιο cmd.
 
-- Βήμα 3: 
+  - Βήμα 3: Μόλις το τρέξουμε θα μας εμφανίσει το αντίστοιχο μήνυμα: 
+
+                               * Serving Flask app 'infoSys'
+                               * Debug mode: on
+                              WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+                               * Running on all addresses (0.0.0.0)
+                               * Running on http://127.0.0.1:5000
+                               * Running on http://192.168.1.4:5000
+                               
+  - Βήμα 4: Παίρνουμε το url http://127.0.0.1:5000 και το τοποθετούμε στην μπάρα αναζήτησης ως εξής: http://127.0.0.1:5000/register
 
 
+  - Βήμα 5: !!!ΠΡΟΣΟΧΗ!!! Στο body του postman πρέπει να είναι raw καθώς και ο τύπος αρχείου JSON - και για το συγκεκριμένο παράδειγμα το method είναι POST.
 
 
+  - Βήμα 6: Αφού είμαστε έτοιμοι να δοκιμάσουμε το endpoint του /register θα περάσουμε τα δεδομένα μας με τον εξής τρόπο με το ακόλουθο JSON αρχείο και πατάμε SEND:
+
+          {
+            "username": "antonhspap",
+            "last_name": "doe",
+            "email": "antonis@example.com",
+            "password": "password123",
+            "date_of_birth": "2002-01-03",
+            "country": "London",
+            "passport_number": "ABCD1244"
+           }
+
+# Από εδώ και στο εξής έχουμε τις ακόλουθες περιπτώσεις:
+
+1) Εφόσον πάνε όλα καλά θα μας εμφανίστεί το ακόλουθο μήνυμα:
+
+            {
+                "New user has user_id": "6483553f7c30ffff318f90e9",
+                "message": "A new user has been successfully registered! Welcome to our family!"
+            }
+        
+        
+2) Αν ο χρήστης που πάμε να προσθέσουμε έχει το ίδιο email με κάποιον άλλον χρήστη τότε μας εμφανίζεται το ακόλουθο μήνυμα όταν πατάμε SEND:
+
+            {
+                "Message": "User with the same email already exists. Try for an other email."
+            }
+
+3) Αν ο χρήστης που πάμε να προσθέσουμε έχει το ίδιο username με κάποιον άλλον χρήστη τότε μας εμφανίζεται το ακόλουθο μήνυμα όταν πατάμε SEND:
+
+
+            {
+                "Message": "Username is already in Use. Try with an other Username."
+            }
+
+
+# Για του λόγου το αληθές:
+
+      - Εκτελούμε αμέσως την εντολή db.usernames.find({}) μέσα στη βάση DigitalAirlines στο cmd μας. 
+      Θα δούμε τον χρήστη antonhspap ακριβώς όπως τον περάσαμε λίγο παραπάνω , δηλαδή:
+  
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/7f9b198a-ccb4-4dfa-83c4-831c5df02c12)
+
+      - Αν πάμε να ξαναπροσθέσουμε τον ίδιο χρήστη , τότε:
+       (Βγάζει error για το ίδιο email καθώς στον κώδικα το email ελέγχεται για το εάν υπάρχει , πρώτο)
+       
+   ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/e2eddb09-bdcc-4442-b404-07ad0fe41a1f)
 
