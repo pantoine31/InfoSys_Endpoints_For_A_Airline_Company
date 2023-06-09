@@ -64,7 +64,13 @@
       
 - Στην συνέχεια , εκτελούμε την εντολή: docker exec -it mongodb mongosh :   
 
-       Η εντολή docker exec -it mongodb mongosh
+       Η εντολή docker exec -it mongodb mongosh χρησιμοποιείται για να εκτελέσει μια εντολή μέσα σε ένα εκτελούμενο container. 
+       Συγκεκριμένα, η εντολή εκτελεί το πρόγραμμα mongosh μέσα στο container με όνομα "mongodb".
+
+       Το mongosh είναι ένα εργαλείο γραμμής εντολών που παρέχεται από τη MongoDB και χρησιμοποιείται για τη διαχείριση και αλληλεπίδραση με μια MongoDB database.
+
+        Με την εντολή docker exec -it mongodb mongosh,  έχουμε πρόσβαση στις λειτουργίες του mongosh και θα μπορούμε να εκτελέσουμε εντολές MongoDB για να αλληλεπιδράσουμε
+        με τη βάση δεδομένων MongoDB που εκτελείται μέσα στο container.
 
 
 
