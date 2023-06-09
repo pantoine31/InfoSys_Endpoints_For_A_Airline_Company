@@ -155,6 +155,22 @@
   - Βήμα 4: Παίρνουμε το url http://127.0.0.1:5000 και το τοποθετούμε στην μπάρα αναζήτησης ως εξής: http://127.0.0.1:5000/register
 
 
+  - Βήμα 5: !!!ΠΡΟΣΟΧΗ!!! Στο body του postman πρέπει να είναι raw καθώς και ο τύπος αρχείου JSON.
+
+
+  - Βήμα 6: Αφού είμαστε έτοιμοι να δοκιμάσουμε το endpoint του /register θα περάσουμε τα δεδομένα μας με τον εξής τρόπο με το ακόλουθο JSON αρχείο:
+
+          {
+            "username": "antonhspap",
+            "last_name": "doe",
+            "email": "antonis@example.com",
+            "password": "password123",
+            "date_of_birth": "2002-01-03",
+            "country": "London",
+            "passport_number": "ABCD1244"
+           }
+
+
 
 
 
