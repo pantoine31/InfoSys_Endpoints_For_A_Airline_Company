@@ -112,9 +112,9 @@
 
 # Δημιουργία των 3 collections μας για την υλοποίηση της εργασίας
  
-  - Δημιουργία collection για τα usernames:
-  - Δημιουργία collection για τα flights:
-  - Δημιουργία collection για τα reservations:
+  - Δημιουργία collection για τα usernames: db.createCollection("usernames")
+  - Δημιουργία collection για τα flights: db.createCollection("flights")
+  - Δημιουργία collection για τα reservations: db.createCollection("rsv")
 
 
 
