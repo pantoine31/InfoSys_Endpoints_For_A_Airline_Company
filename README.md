@@ -192,3 +192,5 @@
             {
                 "Message": "Username is already in Use. Try with an other Username."
             }
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/c071eaa7-79e6-4abb-b4f0-056e22ebf126)
