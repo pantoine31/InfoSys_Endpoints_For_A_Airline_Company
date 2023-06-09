@@ -62,3 +62,24 @@
 
       Επομένως, αν εκτελέσουμε την εντολή docker start mongodb, θα ξεκινήσουμε ξανά το container με το όνομα "mongodb" και θα θέσουμε την κατάσταση του σε εκτέλεση (running).  
       
+- Στην συνέχεια , εκτελούμε την εντολή: docker exec -it mongodb mongosh :   
+
+       Η εντολή docker exec -it mongodb mongosh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
