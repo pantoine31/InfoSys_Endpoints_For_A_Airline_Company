@@ -19,6 +19,8 @@ app = Flask(__name__)
 
 client = MongoClient('localhost:27017')
 
+#kollias mpampas
+
 db = client['DigitalAirlines']
 usersC = db['usernames']
 
