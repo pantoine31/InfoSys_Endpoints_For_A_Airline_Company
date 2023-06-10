@@ -1,4 +1,4 @@
-from flask import Flask, request, Response
+from flask import Flask, request, Response, redirect
 import json
 
 from flask import jsonify
@@ -6,16 +6,38 @@ from flask import jsonify
 import pymongo
 from pymongo import MongoClient
 
+#arxikopoiisi global metavliton 
+#elegxos gia to an einai registered / login oi xristes
+#prin opoiadipote energeia
+
+adminHelp = False
+loginHelp = False
+
+
+
 app = Flask(__name__)
 
-client = MongoClient('mongodb://localhost:27017/')
+client = MongoClient('localhost:27017')
 
 db = client['DigitalAirlines']
-users_collection = db['usernames']
+usersC = db['usernames']
 
-flights_collection = db['flights']
+flightsC = db['flights']
 
-rvts_collection = db['rsv']
+rsvC = db['rsv']
+
+
+
+@app.route('/welcome', methods=['POST'])
+def welcome():
+    # Retrieve the data from the request body
+    
+    return "Welcome to Digital Airlines! Type /login for login or /register for register"
+
+
+
+
+
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -32,12 +54,12 @@ def register():
     passport_number = data.get('passport_number')
 
     # Check for existing user with the same email
-    existing_user = users_collection.find_one({'email': email})
+    existing_user = usersC.find_one({'email': email})
     if existing_user:
         return jsonify({'Message': 'User with the same email already exists. Try for an other email.'}), 400
 
     # Check for existing user with the same username
-    existing_user = users_collection.find_one({'username': username})
+    existing_user = usersC.find_one({'username': username})
     if existing_user:
         return jsonify({'Message': 'Username is already in Use. Try with an other Username.'}), 400
 
@@ -53,7 +75,7 @@ def register():
     }
 
     # Insert the new user into the database
-    result = users_collection.insert_one(new_user)
+    result = usersC.insert_one(new_user)
 
     return jsonify({'message': 'A new user has been successfully registered! Welcome to our family!', 'New user has user_id': str(result.inserted_id)}), 200
 
