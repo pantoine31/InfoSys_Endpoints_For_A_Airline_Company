@@ -10,8 +10,8 @@ from pymongo import MongoClient
 #elegxos gia to an einai registered / login oi xristes
 #prin opoiadipote energeia
 
-adminHelp = False
-loginHelp = False
+#adminHelp = False
+#loginHelp = False
 
 
 
@@ -19,9 +19,8 @@ app = Flask(__name__)
 
 client = MongoClient('localhost:27017')
 
-#kollias mpampas
-
 db = client['DigitalAirlines']
+
 usersC = db['usernames']
 
 flightsC = db['flights']
@@ -30,10 +29,12 @@ rsvC = db['rsv']
 
 
 # ENDPOINT FOR WELCOME
-@app.route('/message')
-def print_message():
-    print("This is a message that will be printed in the console.")
-    return "Message printed in console."
+@app.route('/', methods=['GET','POST'])
+def welcome():
+    print("test")
+    return "For a new registration the endpoint is /register. <br/> For a new login the endpoint is /login."
+
+
 
 
 
@@ -85,6 +86,6 @@ def register():
 
 # my flask app running from here
 if __name__ == '__main__':
- app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5000)
  
  
