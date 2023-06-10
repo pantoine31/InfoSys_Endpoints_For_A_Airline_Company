@@ -56,8 +56,11 @@ def register():
     result = users_collection.insert_one(new_user)
 
     return jsonify({'message': 'A new user has been successfully registered! Welcome to our family!', 'New user has user_id': str(result.inserted_id)}), 200
-# η συνεχεια αυριο
+
+
+
+# my flask app running from here
 if __name__ == '__main__':
  app.run(debug=True, host='0.0.0.0', port=5000)
  
- #terma to terma , savvato simera
+ 
