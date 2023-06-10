@@ -145,14 +145,9 @@
 
   - Βήμα 3: Μόλις το τρέξουμε θα μας εμφανίσει το αντίστοιχο μήνυμα: 
 
-                               * Serving Flask app 'infoSys'
-                               * Debug mode: on
-                              WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
-                               * Running on all addresses (0.0.0.0)
-                               * Running on http://127.0.0.1:5000
-                               * Running on http://192.168.1.4:5000
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/f35a1a1d-7fa5-40f7-9b7a-667e23752157)
                                
-  - Βήμα 4: Παίρνουμε το url http://127.0.0.1:5000 και το τοποθετούμε στην μπάρα αναζήτησης ως εξής: http://127.0.0.1:5000/register
+  - Βήμα 4: Παίρνουμε το url http://127.0.0.1:5000 και το τοποθετούμε στην μπάρα αναζήτησης του postman ως εξής: http://127.0.0.1:5000/register
 
 
   - Βήμα 5: !!!ΠΡΟΣΟΧΗ!!! Στο body του postman πρέπει να είναι raw καθώς και ο τύπος αρχείου JSON - και για το συγκεκριμένο παράδειγμα το method είναι POST.
