@@ -27,18 +27,15 @@ flightsC = db['flights']
 rsvC = db['rsv']
 
 
-
-@app.route('/welcome', methods=['POST'])
-def welcome():
-    # Retrieve the data from the request body
-    
-    return "Welcome to Digital Airlines! Type /login for login or /register for register"
-
+# ENDPOINT FOR WELCOME
+@app.route('/message')
+def print_message():
+    print("This is a message that will be printed in the console.")
+    return "Message printed in console."
 
 
 
-
-
+# ENDPOINT FOR REGISTER
 @app.route('/register', methods=['POST'])
 def register():
     # Retrieve the data from the request body
@@ -78,6 +75,9 @@ def register():
     result = usersC.insert_one(new_user)
 
     return jsonify({'message': 'A new user has been successfully registered! Welcome to our family!', 'New user has user_id': str(result.inserted_id)}), 200
+
+
+
 
 
 
