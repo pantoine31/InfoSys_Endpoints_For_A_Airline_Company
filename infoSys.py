@@ -10,8 +10,8 @@ from pymongo import MongoClient
 #elegxos gia to an einai registered / login oi xristes
 #prin opoiadipote energeia
 
-#adminHelp = False
-#loginHelp = False
+adminHelp = False
+loginHelp = False
 
 
 
@@ -29,9 +29,12 @@ rsvC = db['rsv']
 
 
 # ENDPOINT FOR WELCOME
-@app.route('/', methods=['GET','POST'])
+@app.route('/welcome', methods=['GET','POST'])
 def welcome():
-    print("test")
+    global adminHelp    
+    global loginHelp
+    adminHelp = False
+    loginHelp = False
     return "For a new registration the endpoint is /register. <br/> For a new login the endpoint is /login."
 
 
@@ -41,7 +44,8 @@ def welcome():
 # ENDPOINT FOR REGISTER
 @app.route('/register', methods=['POST'])
 def register():
-    # Retrieve the data from the request body
+    
+    # Retrieve the data from the request body in postman
     data = request.get_json()
 
     # Extract the parameters from the data
@@ -78,6 +82,70 @@ def register():
     result = usersC.insert_one(new_user)
 
     return jsonify({'message': 'A new user has been successfully registered! Welcome to our family!', 'New user has user_id': str(result.inserted_id)}), 200
+
+
+# ENDPOINT FOR LOGIN
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    
+    global loginHelp 
+    
+    # Retrieve the data from the request body in postman
+    data = request.get_json()
+
+    email = data.get('email')
+    password = data.get('password')
+
+    # Check for existing user with this email and password
+    existing_user = usersC.find_one({'email': email, 'password': password} )
+    
+    if existing_user:
+        
+        loginHelp = True
+        return redirect('/opt' , code=302)
+    else:
+        return 'Email OR password is wrong , please try again'
+
+
+# ENDPOINT FOR OPTIONS
+@app.route('/opt', methods=['GET','POST'])
+def opt():
+    global loginHelp 
+    
+    if loginHelp:
+        return 'ALL OPTIONS ARE HERE'
+    else:
+        return 'Login or Register first'
+
+
+
+
+# ENDPOINT FOR EXIT
+
+@app.route('/exit', methods=['POST'])
+def e():
+    
+   global adminHelp 
+   adminHelp = False
+   
+   global loginHelp
+   loginHelp = False
+   
+  
+   return redirect('/welcome' , code=302)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
