@@ -222,3 +222,15 @@
        
    ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/e2eddb09-bdcc-4442-b404-07ad0fe41a1f)
 
+
+
+
+
+
+#                                                     EndPoints for EXIT - LOGIN
+
+- LOGIN:
+ Σχετικά με την υλοποίηση του συστήματος μας , αναφέρεται πως ο ADMIN πρέπει να είναι ήδη μέσα στο σύστημα και πως οποιοσδήποτε κάνει register θα είναι απλός χρήστης. 
+ Με την παρακάτω εντολή , μέσω CMD , περνάμε εμείς έναν χρήστη στη βάση. Ο admin μας λοιπόν έχει τα εξής στοιχεία:
+ ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/d47c07d1-fc22-49fc-bd7a-da44e22eca63)
+
