@@ -227,10 +227,14 @@
 
 
 
-#                                                     EndPoints for EXIT - LOGIN
+#                                                     EndPoints for ADMIN ONLY
 
-- LOGIN:
- Σχετικά με την υλοποίηση του συστήματος μας , αναφέρεται πως ο ADMIN πρέπει να είναι ήδη μέσα στο σύστημα και πως οποιοσδήποτε άλλος κάνει register θα είναι απλός χρήστης. 
- Έτσι θα αρικοποιήσουμε τον ADMIN στο σύστημα μας:
- ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/cbe22483-b65b-4bf4-a8a2-99ea053a306a)
+- Ο admin έχει δηλωθεί στο σύστημα μας και δεν χρειάζεται να κάνει register. Τα στοιχεία του ADMIN είναι:
+
+    ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/d4309f2f-fbde-4a3b-971f-44c29210e6db)
+
+ - Ο ADMIN έχει στα ακόλουθα endpoionts πρόσβαση:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/da49f370-f54b-4581-a41f-44225e08ad6d)
+
 
