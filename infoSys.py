@@ -30,20 +30,58 @@ flightsC = db['flights']
 rsvC = db['rsv']
 
 
-# ENDPOINT FOR WELCOME
+# ENDPOINT FOR WELCOME (same for User - Admin)
 @app.route('/welcome', methods=['GET','POST'])
 def welcome():
     global adminHelp    
     global userHelp
     adminHelp = False
     userHelp = False
-    return "For a new registration the endpoint is /register\n For a new login the endpoint is /login."
+    return "For a new registration the endpoint is /register\n For a new login the endpoint is /login.", 200
 
 
+# ENDPOINT FOR LOGIN (same for ADMIN - USER)
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    
+    global userHelp 
+    global adminHelp 
+    global adminName
+    global adminPassword
+    
+    # Retrieve the data from the request body in postman
+    data = request.get_json()
+
+    email = data.get('email')
+    password = data.get('password')
+
+    # Check for existing user with this email and password
+    existing_user = usersC.find_one({'email': email, 'password': password} )
+    
+    
+
+    if existing_user:
+        userHelp = True
+        adminHelp = False
+        return redirect('/opt' , code=302)
+    elif email==adminName and password == adminPassword:
+        adminHelp = True
+        return redirect('/optAdmin' , code=302)
+    else:
+        return 'Email OR password is wrong , please try again'
+    
+    
+    
+
+# !!!!!!!!  !!!!!!!! !!!!!!!! !!!!!!!! 
+# !!!!!!!!  !!!!!!!!!!!!!!!!! !!!!!!!!
+# ENDPOINTS FOR USERS ONLY    !!!!!!!!
+# !!!!!!!!  !!!!!!!! !!!!!!!! !!!!!!!! 
+# !!!!!!!!  !!!!!!!!!!!!!!!!! !!!!!!!!
 
 
-
-# ENDPOINT FOR REGISTER
+# ENDPOINT FOR REGISTER (User's endpoint)
 @app.route('/register', methods=['POST'])
 def register():
     
@@ -86,42 +124,12 @@ def register():
     return jsonify({'message': 'A new user has been successfully registered! Welcome to our family!', 'New user has user_id': str(result.inserted_id)}), 200
 
 
-# ENDPOINT FOR LOGIN
 
-@app.route('/login', methods=['GET','POST'])
-def login():
-    
-    global userHelp 
-    global adminHelp 
-    global adminName
-    global adminPassword
-    
-    # Retrieve the data from the request body in postman
-    data = request.get_json()
-
-    email = data.get('email')
-    password = data.get('password')
-
-    # Check for existing user with this email and password
-    existing_user = usersC.find_one({'email': email, 'password': password} )
-    
-    
-
-    if existing_user:
-        userHelp = True
-        adminHelp = False
-        return redirect('/opt' , code=302)
-    elif email==adminName and password == adminPassword:
-        adminHelp = True
-        return redirect('/optAdmin' , code=302)
-    else:
-        return 'Email OR password is wrong , please try again'
-    
    
 
 
 
-# ENDPOINT FOR OPTIONS USER
+# ENDPOINT FOR OPTIONS USER (user's endpoint)
 @app.route('/opt', methods=['GET','POST'])
 def opt():
     global userHelp 
@@ -130,8 +138,123 @@ def opt():
     if userHelp and adminHelp==False:
         return 'Ακολουθεί το μενού επιλογών για έναν απλό Χρήστη:\n\n1. Endpoint για την έξοδο: /exit\n 2. Endpoint για την αναζήτηση πτήσεων: /srch\n 3. Endpoint για την εμφάνιση στοιχείων πτήσης: /det\n 4. Endpoint για την κράτηση εισιτηρίου: /hold\n 5. Endpoint για την εμφάνιση των κρατήσεων: /reserv\n 6. Endpoint για την εμφάνιση στοιχείων κράτησης: /ResDet\n 7. Endpoint για την ακύρωση κράτησης: /canF.\n 8. Endpoint για την διαγραφή του λογαριασμού: /delete'
     else:
-        return 'Register OR login First'
+        return 'You are not a simple user. Register or login as a simple user'
 
+
+# ENDPOINT FOR SEARCHING FLIGHTS (only user)
+@app.route('/srch', methods=['GET','POST'])
+def srch():
+    global userHelp 
+    global adminHelp 
+    
+    if userHelp:
+        return "HEY user! Let's search any flight u want!"
+    
+    
+    else:
+        return "Login/Register as user First." 
+
+
+# ENDPOINT FOR DETAILS OF FLIGHTS (only user)
+@app.route('/det', methods=['GET','POST'])
+def det():
+    global userHelp 
+    global adminHelp 
+    
+    if userHelp:
+        return "HEY user! Let's search any detail for any flight u want!"
+    
+    
+    else:
+        return "Login/Register as user First." 
+
+
+# ENDPOINT FOR HOLDING TICKETS (only user)
+@app.route('/hold', methods=['GET','POST'])
+def hold():
+    global userHelp 
+    global adminHelp 
+    
+    if userHelp:
+        return "HEY user! Let's hold ticket for any flight u want!"
+    
+    
+    else:
+        return "Login/Register as user First." 
+    
+    
+# ENDPOINT FOR SHOWING RESEVATIONS  (only user)
+@app.route('/reserv', methods=['GET','POST'])
+def reserv():
+    global userHelp 
+    global adminHelp 
+    
+    if userHelp:
+        return "HEY user! Let's show your reservations!"
+    
+    
+    else:
+        return "Login/Register as user First." 
+    
+    
+# ENDPOINT FOR SHOWING DETAILS OF RESERVATION
+@app.route('/ResDet', methods=['GET','POST'])
+def ResDet():
+    global userHelp 
+    global adminHelp 
+    
+    if userHelp:
+        return "HEY user! Let's show your details of your reservation !"
+    
+    
+    else:
+        return "Login/Register as user First." 
+    
+
+# ENDPOINT FOR CANCELING RESERVATION
+@app.route('/canF', methods=['GET','POST'])
+def canF():
+    global userHelp 
+    global adminHelp 
+    
+    if userHelp:
+        return "HEY user! Let's delete any of your reservation !"
+    
+    
+    else:
+        return "Login/Register as user First." 
+
+# ENDPOINT FOR DELETE ACCOUNT
+@app.route('/delete', methods=['GET','POST'])
+def delete():
+    global userHelp 
+    global adminHelp 
+    
+    if userHelp:
+        return "HEY user! Let's delete your account !"
+    
+    
+    else:
+        return "Login/Register as user First." 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+# !!!!!!!!  !!!!!!!! !!!!!!!! !!!!!!!! 
+# !!!!!!!!  !!!!!!!!!!!!!!!!! !!!!!!!!
+# ENDPOINTS FOR ADMIN ONLY    !!!!!!!!
+# !!!!!!!!  !!!!!!!! !!!!!!!! !!!!!!!! 
+# !!!!!!!!  !!!!!!!!!!!!!!!!! !!!!!!!!
 
 # ENDPOINT FOR ADMIN OPTIONS
 @app.route('/optAdmin', methods=['GET','POST'])
@@ -142,13 +265,87 @@ def opta():
     if adminHelp:
         return 'Ακολουθεί το μενού επιλογών για τον διαχειριστή του συστήματος:\n\n1. Endpoint για την έξοδο: /exit\n 2. Endpoint για τη δημιουργία πτήσης: /create\n 3. Endpoint για την ανανέωση τιμών: /price\n 4. Endpoint για τη διαγραφή πτήσης: /delFlight\n 5. Endpoint για αναζήτηση πτήσεων: /searchFlights\n 6. Endpoint για εμφάνιση στοιχείων πτήσεων: /Details\n'
     else:
-        return 'Register OR login First'
+        return 'login as admin First'
 
 
 
 
 
-# ENDPOINT FOR EXIT
+# ENDPOINT FOR Create new flight
+@app.route('/create', methods=['GET','POST'])
+def create():
+    global userHelp 
+    global adminHelp 
+    
+    if adminHelp:
+        return "Let's create a flight!"
+    
+    
+    
+    
+    else:
+        return "Login as admin First."
+    
+    
+    
+# ENDPOINT FOR UPDATE PRICES
+@app.route('/price', methods=['GET','POST'])
+def price():
+    global userHelp 
+    global adminHelp 
+    
+    if adminHelp:
+        return "Let's update prices!"
+    
+    
+    else:
+        return "Login as admin First."    
+    
+    
+    
+# ENDPOINT FOR DELETING FLIGHTS
+@app.route('/delFlight', methods=['GET','POST'])
+def delFlight():
+    global userHelp 
+    global adminHelp 
+    
+    if adminHelp:
+        return "Let's delete any flight u want!"
+    
+    
+    else:
+        return "Login as admin First."     
+    
+    
+# ENDPOINT FOR SEARCHING FLIGHTS
+@app.route('/searchFlights', methods=['GET','POST'])
+def searchFlights():
+    global userHelp 
+    global adminHelp 
+    
+    if adminHelp:
+        return "Let's search any flight u want!"
+    
+    
+    else:
+        return "Login as admin First."      
+    
+    
+# ENDPOINT FOR SEARCHING DETAILS OF FLIGHTS
+@app.route('/Details', methods=['GET','POST'])
+def Details():
+    global userHelp 
+    global adminHelp 
+    
+    if adminHelp:
+        return "Let's search details for any flight u want!"
+    
+    
+    else:
+        return "Login as admin First."  
+    
+
+# ENDPOINT FOR EXIT  (same for USER - ADMIN)
 
 @app.route('/exit', methods=['POST'])
 def e():
