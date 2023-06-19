@@ -230,7 +230,7 @@
 #                                                     EndPoints for EXIT - LOGIN
 
 - LOGIN:
- Σχετικά με την υλοποίηση του συστήματος μας , αναφέρεται πως ο ADMIN πρέπει να είναι ήδη μέσα στο σύστημα και πως οποιοσδήποτε κάνει register θα είναι απλός χρήστης. 
- Με την παρακάτω εντολή , μέσω CMD , περνάμε εμείς έναν χρήστη στη βάση. Ο admin μας λοιπόν έχει τα εξής στοιχεία:
- ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/d47c07d1-fc22-49fc-bd7a-da44e22eca63)
+ Σχετικά με την υλοποίηση του συστήματος μας , αναφέρεται πως ο ADMIN πρέπει να είναι ήδη μέσα στο σύστημα και πως οποιοσδήποτε άλλος κάνει register θα είναι απλός χρήστης. 
+ Έτσι θα αρικοποιήσουμε τον ADMIN στο σύστημα μας:
+ ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/cbe22483-b65b-4bf4-a8a2-99ea053a306a)
 
