@@ -237,4 +237,7 @@
 
 ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/da49f370-f54b-4581-a41f-44225e08ad6d)
 
+ΚΑΘΕ φορά που κάποιος δεν είναι ADMIN ή δεν έχει προηγηθεί login as ADMIN - και προσπαθεί να μπει στα παραπάνω endpoints- εμφανίζεται το αντίστοιχο μήνυμα:
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/b157526c-eb6b-4612-9add-78424ca63fd9)
+
 
