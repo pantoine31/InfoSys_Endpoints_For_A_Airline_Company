@@ -11,8 +11,10 @@ from pymongo import MongoClient
 #prin opoiadipote energeia
 
 adminHelp = False
-loginHelp = False
+userHelp = False
 
+adminName = 'admin@admin.gr'
+adminPassword = '123321'
 
 
 app = Flask(__name__)
@@ -32,10 +34,10 @@ rsvC = db['rsv']
 @app.route('/welcome', methods=['GET','POST'])
 def welcome():
     global adminHelp    
-    global loginHelp
+    global userHelp
     adminHelp = False
-    loginHelp = False
-    return "For a new registration the endpoint is /register. <br/> For a new login the endpoint is /login."
+    userHelp = False
+    return "For a new registration the endpoint is /register\n For a new login the endpoint is /login."
 
 
 
@@ -89,7 +91,10 @@ def register():
 @app.route('/login', methods=['GET','POST'])
 def login():
     
-    global loginHelp 
+    global userHelp 
+    global adminHelp 
+    global adminName
+    global adminPassword
     
     # Retrieve the data from the request body in postman
     data = request.get_json()
@@ -100,23 +105,45 @@ def login():
     # Check for existing user with this email and password
     existing_user = usersC.find_one({'email': email, 'password': password} )
     
+    
+
     if existing_user:
-        
-        loginHelp = True
+        userHelp = True
+        adminHelp = False
         return redirect('/opt' , code=302)
+    elif email==adminName and password == adminPassword:
+        adminHelp = True
+        return redirect('/optAdmin' , code=302)
     else:
         return 'Email OR password is wrong , please try again'
+    
+   
 
 
-# ENDPOINT FOR OPTIONS
+
+# ENDPOINT FOR OPTIONS USER
 @app.route('/opt', methods=['GET','POST'])
 def opt():
-    global loginHelp 
+    global userHelp 
+    global adminHelp 
     
-    if loginHelp:
-        return 'ALL OPTIONS ARE HERE'
+    if userHelp and adminHelp==False:
+        return 'Ακολουθεί το μενού επιλογών για έναν απλό Χρήστη:\n\n1. Endpoint για την έξοδο: /exit\n 2. Endpoint για την αναζήτηση πτήσεων: /srch\n 3. Endpoint για την εμφάνιση στοιχείων πτήσης: /det\n 4. Endpoint για την κράτηση εισιτηρίου: /hold\n 5. Endpoint για την εμφάνιση των κρατήσεων: /reserv\n 6. Endpoint για την εμφάνιση στοιχείων κράτησης: /ResDet\n 7. Endpoint για την ακύρωση κράτησης: /canF.\n 8. Endpoint για την διαγραφή του λογαριασμού: /delete'
     else:
-        return 'Login or Register first'
+        return 'Register OR login First'
+
+
+# ENDPOINT FOR ADMIN OPTIONS
+@app.route('/optAdmin', methods=['GET','POST'])
+def opta():
+    global userHelp 
+    global adminHelp 
+    
+    if adminHelp:
+        return 'Ακολουθεί το μενού επιλογών για τον διαχειριστή του συστήματος:\n\n1. Endpoint για την έξοδο: /exit\n 2. Endpoint για τη δημιουργία πτήσης: /create\n 3. Endpoint για την ανανέωση τιμών: /price\n 4. Endpoint για τη διαγραφή πτήσης: /delFlight\n 5. Endpoint για αναζήτηση πτήσεων: /searchFlights\n 6. Endpoint για εμφάνιση στοιχείων πτήσεων: /Details\n'
+    else:
+        return 'Register OR login First'
+
 
 
 
@@ -129,26 +156,11 @@ def e():
    global adminHelp 
    adminHelp = False
    
-   global loginHelp
-   loginHelp = False
+   global userHelp
+   userHelp = False
    
   
    return redirect('/welcome' , code=302)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
