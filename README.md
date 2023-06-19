@@ -247,3 +247,9 @@
   
 ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/20cc50ce-6ba9-4eeb-9fa6-b0cc6bcdf758)
 
+
+# ΚΑΘΕ φορά που κάποιος δεν είναι USER ή δεν έχει προηγηθεί login/register as USER - και προσπαθεί να μπει στα παραπάνω endpoints- εμφανίζεται το αντίστοιχο μήνυμα:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/58d46f93-e542-4708-8ce7-2c93674cda6f)
+
+
