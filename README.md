@@ -242,3 +242,8 @@
 ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/b157526c-eb6b-4612-9add-78424ca63fd9)
 
 
+#                                                     EndPoints for USER ONLY
+- Ο απλός user πριν κάνει login στο σύστημα μας , χρειάζεται να κάνει register. Ένας απλός user , αφού κάνει register , εφόσον ακολουθήσει το endpoint του login , έχει πρόσβαση στα ακόλουθα endpoints:
+  
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/20cc50ce-6ba9-4eeb-9fa6-b0cc6bcdf758)
+
