@@ -253,6 +253,9 @@
 ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/58d46f93-e542-4708-8ce7-2c93674cda6f)
 
 
+
+#                                                     EndPoints for ADMIN ONLY
+
 # 1) Endpoint /create 
 -> Δημιουργία νέας πτήσης από τον admin:
    Εδώ παρατηρούμε πως φτιάχνουμε στο postman το flight μας και μετά μέσω cmd βλέπουμε πως το flight έχει δημιουργηθεί κανονικά:
