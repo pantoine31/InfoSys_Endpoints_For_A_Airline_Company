@@ -250,6 +250,14 @@
 ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/58d46f93-e542-4708-8ce7-2c93674cda6f)
 
 
+# USER ENDPOINTS ARE HERE:
+
+# 1) 
+
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/6694f064-acd3-4acc-91bd-c96ef4977269)
+
+
 
 #                                                     EndPoints for ADMIN ONLY
 
