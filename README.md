@@ -288,8 +288,14 @@
 
    ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/293183b5-47b1-4cbd-a701-37a3431f7b0a)
 
+  !Σημείωση!
+  Για την εμφάνιση ΟΛΩΝ των διαθέσιμων πτήσεων εκτελούμε στο postman το ακόλουθο:
 
-   
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/4666deb9-61b1-49eb-87ac-c35041f0b8bb)
+
+  Αυτό γιατί όταν κανένα από τα πεδία airportFrom, airportTo και flightDate δεν έχει συμπληρωθεί, η συνθήκη είναι αληθής και θα επιστραφούν όλες οι πτήσεις που υπάρχουν στη συλλογή.
+
+ # 4) Endpoint 
 
    
 
