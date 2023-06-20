@@ -222,6 +222,22 @@
        
    ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/e2eddb09-bdcc-4442-b404-07ad0fe41a1f)
 
+# Login sessions for user and admin
+- USER LOGIN AT POSTMAN:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/cb2ef022-661c-498d-93b0-8df821e3cbbb)
+
+
+
+
+
+
+  
+-   ADMIN LOGIN AT POSTMAN:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/20335cb8-1bd8-4479-b5d6-e3307c07eef8)
+
+
 
 #                                                     EndPoints for USER ONLY
 - Ο απλός user πριν κάνει login στο σύστημα μας , χρειάζεται να κάνει register. Ένας απλός user , αφού κάνει register , εφόσον ακολουθήσει το endpoint του login , έχει πρόσβαση στα ακόλουθα endpoints:
