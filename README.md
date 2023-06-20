@@ -223,25 +223,6 @@
    ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/e2eddb09-bdcc-4442-b404-07ad0fe41a1f)
 
 
-
-
-
-
-#                                                     EndPoints for ADMIN ONLY
-
-- Ο admin έχει δηλωθεί στο σύστημα μας και δεν χρειάζεται να κάνει register. Τα στοιχεία του ADMIN είναι:
-
-    ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/d4309f2f-fbde-4a3b-971f-44c29210e6db)
-
- - Ο ADMIN έχει στα ακόλουθα endpoionts πρόσβαση:
-
-![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/da49f370-f54b-4581-a41f-44225e08ad6d)
-
-# ΚΑΘΕ φορά που κάποιος δεν είναι ADMIN ή δεν έχει προηγηθεί login as ADMIN - και προσπαθεί να μπει στα παραπάνω endpoints- εμφανίζεται το αντίστοιχο μήνυμα:
-
-![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/b157526c-eb6b-4612-9add-78424ca63fd9)
-
-
 #                                                     EndPoints for USER ONLY
 - Ο απλός user πριν κάνει login στο σύστημα μας , χρειάζεται να κάνει register. Ένας απλός user , αφού κάνει register , εφόσον ακολουθήσει το endpoint του login , έχει πρόσβαση στα ακόλουθα endpoints:
   
@@ -255,6 +236,21 @@
 
 
 #                                                     EndPoints for ADMIN ONLY
+
+
+
+- Ο admin έχει δηλωθεί στο σύστημα μας και δεν χρειάζεται να κάνει register. Τα στοιχεία του ADMIN είναι:
+
+    ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/d4309f2f-fbde-4a3b-971f-44c29210e6db)
+
+ - Ο ADMIN έχει στα ακόλουθα endpoionts πρόσβαση:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/da49f370-f54b-4581-a41f-44225e08ad6d)
+
+# ΚΑΘΕ φορά που κάποιος δεν είναι ADMIN ή δεν έχει προηγηθεί login as ADMIN - και προσπαθεί να μπει στα παραπάνω endpoints- εμφανίζεται το αντίστοιχο μήνυμα:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/b157526c-eb6b-4612-9add-78424ca63fd9)
+
 
 # 1) Endpoint /create 
 -> Δημιουργία νέας πτήσης από τον admin:
