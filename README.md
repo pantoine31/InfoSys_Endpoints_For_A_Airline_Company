@@ -253,12 +253,12 @@
 ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/58d46f93-e542-4708-8ce7-2c93674cda6f)
 
 
-# 1) Endpoint /create #
+# 1) Endpoint /create 
 -> Δημιουργία νέας πτήσης από τον admin:
    Εδώ παρατηρούμε πως φτιάχνουμε στο postman το flight μας και μετά μέσω cmd βλέπουμε πως το flight έχει δημιουργηθεί κανονικά:
 
    ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/f41ef3f0-ac3a-4ac3-8cfb-81032aed5d9a)
-# 2) Endpoint /price #
+# 2) Endpoint /price 
 -> Ανανέωση τιμών μίας πτήσης από τον admin βάση του id της πτήσης:
    Εδώ παρατηρούμε πως στο postman , αφού βάλουμε το /price που είναι το endpoint μας, πρέπει να βάλουμε και /id_flight. 
    Παραθέτω την αλλαγή του flight με id 6491bee21d99d41bd1bd5e79. 
@@ -271,7 +271,15 @@
    ΜΕΤΑ την αλλαγή:
 
    ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/ac528b00-f9b1-4246-b0c3-725854e7a24f)
-
+# 3) Endpoint /searchFlights
+-> Αναζήτηση πτήσεων από τον admin βάση: 
+  - Αεροδρόμιο προέλευσης και αεροδρόμιο τελικού προορισμού
+  - Αεροδρόμιο προέλευσης, αεροδρόμιο τελικού προορισμού και ημερομηνία διεξαγωγής
+  - Ανά ημερομηνία
+  - Εμφάνιση όλων των διαθέσιμων πτήσεων
+   Εδώ παρατηρούμε πως στο postman , αφού βάλουμε το /searchFlights που είναι το endpoint μας, πρέπει να βάλουμε και το τρόπο που θέλουμε να αναζητήσουμε.
+   Έστω ότι αναζητούμε με Αεροδρόμιο προέλευσης και αεροδρόμιο τελικού προορισμού
+   
 
    
 
