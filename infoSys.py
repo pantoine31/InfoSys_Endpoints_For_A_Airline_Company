@@ -69,7 +69,7 @@ def login():
         adminHelp = True
         return redirect('/optAdmin' , code=302)
     else:
-        return 'Email OR password is wrong , please try again'
+        return 'Email OR password is wrong , please try again' , 400
     
     
     
@@ -85,10 +85,10 @@ def login():
 @app.route('/register', methods=['POST'])
 def register():
     
-    # Retrieve the data from the request body in postman
+    # take data from the request body in postman
     data = request.get_json()
 
-    # Extract the parameters from the data
+    # put data from json into variables
     username = data.get('username')
     last_name = data.get('last_name')
     email = data.get('email')
@@ -121,7 +121,7 @@ def register():
     # Insert the new user into the database
     result = usersC.insert_one(new_user)
 
-    return jsonify({'message': 'A new user has been successfully registered! Welcome to our family!', 'New user has user_id': str(result.inserted_id)}), 200
+    return jsonify({'message': 'A new user has been successfully registered! Welcome to our family!', 'New user has user_id': str(result.inserted_id)}), 201
 
 
 
@@ -136,9 +136,9 @@ def opt():
     global adminHelp 
     
     if userHelp and adminHelp==False:
-        return 'Ακολουθεί το μενού επιλογών για έναν απλό Χρήστη:\n\n1. Endpoint για την έξοδο: /exit\n 2. Endpoint για την αναζήτηση πτήσεων: /srch\n 3. Endpoint για την εμφάνιση στοιχείων πτήσης: /det\n 4. Endpoint για την κράτηση εισιτηρίου: /hold\n 5. Endpoint για την εμφάνιση των κρατήσεων: /reserv\n 6. Endpoint για την εμφάνιση στοιχείων κράτησης: /ResDet\n 7. Endpoint για την ακύρωση κράτησης: /canF.\n 8. Endpoint για την διαγραφή του λογαριασμού: /delete'
+        return 'Ακολουθεί το μενού επιλογών για έναν απλό Χρήστη:\n\n1. Endpoint για την έξοδο: /exit\n 2. Endpoint για την αναζήτηση πτήσεων: /srch\n 3. Endpoint για την εμφάνιση στοιχείων πτήσης: /det\n 4. Endpoint για την κράτηση εισιτηρίου: /hold\n 5. Endpoint για την εμφάνιση των κρατήσεων: /reserv\n 6. Endpoint για την εμφάνιση στοιχείων κράτησης: /ResDet\n 7. Endpoint για την ακύρωση κράτησης: /canF.\n 8. Endpoint για την διαγραφή του λογαριασμού: /delete', 200
     else:
-        return 'You are not a simple user. Register or login as a simple user'
+        return 'You are not a simple user. Register or login as a simple user', 400
 
 
 # ENDPOINT FOR SEARCHING FLIGHTS (only user)
@@ -276,15 +276,42 @@ def opta():
 def create():
     global userHelp 
     global adminHelp 
+    adminHelp = True
     
     if adminHelp:
-        return "Let's create a flight!"
-    
-    
-    
-    
+        
+        # take data from the request body in postman
+        data = request.get_json()
+
+        # put data from json into variables
+        airportFrom = data.get('airportFrom')
+        airportTo = data.get('airportTo')
+        flightDate = data.get('flightDate')
+        availableTicketsB = data.get('availableTicketsB')
+        costB = data.get('costB')
+        availableTicketsE = data.get('availableTicketsE')
+        costE = data.get('costE')
+
+
+        
+        # Create a new flight
+        new_flight = {
+            'airportFrom': airportFrom,
+            'airportTo': airportTo,
+            'flightDate': flightDate,
+            'availableTicketsB': availableTicketsB,
+            'costB': costB,
+            'availableTicketsE': availableTicketsE,
+            'costE': costE
+        }
+
+        # Insert the new user into the database
+        result2 = flightsC.insert_one(new_flight)
+
+        return jsonify({'message': 'A new flight has been successfully created! '}), 201
+
     else:
-        return "Login as admin First."
+        return "Login as admin First.", 400
     
     
     
@@ -363,5 +390,4 @@ def e():
 # my flask app running from here
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
- 
  
