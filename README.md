@@ -291,6 +291,16 @@
     
   ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/3f959819-dbcf-4e89-816c-8eeb26f308b7)
 
+  # 3) Endpoint /hold
+  -> Endpoint για την κράτηση μίας πτήσης από τον χρήστη.
+
+  Παρατηρούμε πως μεταξύ άλλων , στη βάση δεδομένων έχουμε και την πτήση με id 6491c544e64d9b5410088511
+
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/caa1fa5c-8ced-4e3f-9905-f6beb91fb5dc)
+
+  Έστω λοιπόν ότι θέλουμε να κάνουμε κράτηση σε αυτή τη πτήση:
+
 
 
 #                                                     EndPoints for ADMIN ONLY
