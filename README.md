@@ -222,12 +222,66 @@
        
    ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/e2eddb09-bdcc-4442-b404-07ad0fe41a1f)
 
+# Login sessions for user and admin
+- USER LOGIN AT POSTMAN:
 
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/cb2ef022-661c-498d-93b0-8df821e3cbbb)
+
+
+
+
+
+
+  
+-   ADMIN LOGIN AT POSTMAN:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/20335cb8-1bd8-4479-b5d6-e3307c07eef8)
+
+
+
+#                                                     EndPoints for USER ONLY
+- Ο απλός user πριν κάνει login στο σύστημα μας , χρειάζεται να κάνει register. Ένας απλός user , αφού κάνει register , εφόσον ακολουθήσει το endpoint του login , έχει πρόσβαση στα ακόλουθα endpoints:
+  
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/20cc50ce-6ba9-4eeb-9fa6-b0cc6bcdf758)
+
+
+# ΚΑΘΕ φορά που κάποιος δεν είναι USER ή δεν έχει προηγηθεί login/register as USER - και προσπαθεί να μπει στα παραπάνω endpoints- εμφανίζεται το αντίστοιχο μήνυμα:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/58d46f93-e542-4708-8ce7-2c93674cda6f)
+
+
+# USER ENDPOINTS ARE HERE:
+
+# 1) Endpoint /srch
+-> Αναζήτηση πτήσεων από τον user βάση: 
+  - Αεροδρόμιο προέλευσης και αεροδρόμιο τελικού προορισμού
+  - Αεροδρόμιο προέλευσης, αεροδρόμιο τελικού προορισμού και ημερομηνία διεξαγωγής
+  - Ανά ημερομηνία
+  - Εμφάνιση όλων των διαθέσιμων πτήσεων
+
+   Εδώ παρατηρούμε πως στο postman , αφού βάλουμε το /srch που είναι το endpoint μας, πρέπει να βάλουμε και το τρόπο που θέλουμε να αναζητήσουμε.
+   Έστω ότι αναζητούμε με Αεροδρόμιο προέλευσης και αεροδρόμιο τελικού προορισμού.
+   Βλέπουμε πως στο collection flights , μεταξύ άλλων , υπάρχει και η πτήση από parisi προς ellada:
+
+   ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/1a80c865-639b-40b4-8e49-32a5c948c156)
+
+   Κάνουμε την αναζήτηση στο postman και βλέπουμε ότι:
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/9d8d8449-1595-4bea-8f71-edf4b2713c34)
+
+  !Σημείωση!
+  Για την εμφάνιση ΟΛΩΝ των διαθέσιμων πτήσεων εκτελούμε στο postman το ακόλουθο:
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/4d89e5d5-8e69-4521-9e81-5902f4bfe725)
+
+  Αυτό γιατί όταν κανένα από τα πεδία airportFrom, airportTo και flightDate δεν έχει συμπληρωθεί, η συνθήκη είναι αληθής και θα επιστραφούν όλες οι πτήσεις που υπάρχουν στη συλλογή.
 
 
 
 
 #                                                     EndPoints for ADMIN ONLY
+
+
 
 - Ο admin έχει δηλωθεί στο σύστημα μας και δεν χρειάζεται να κάνει register. Τα στοιχεία του ADMIN είναι:
 
@@ -240,17 +294,6 @@
 # ΚΑΘΕ φορά που κάποιος δεν είναι ADMIN ή δεν έχει προηγηθεί login as ADMIN - και προσπαθεί να μπει στα παραπάνω endpoints- εμφανίζεται το αντίστοιχο μήνυμα:
 
 ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/b157526c-eb6b-4612-9add-78424ca63fd9)
-
-
-#                                                     EndPoints for USER ONLY
-- Ο απλός user πριν κάνει login στο σύστημα μας , χρειάζεται να κάνει register. Ένας απλός user , αφού κάνει register , εφόσον ακολουθήσει το endpoint του login , έχει πρόσβαση στα ακόλουθα endpoints:
-  
-![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/20cc50ce-6ba9-4eeb-9fa6-b0cc6bcdf758)
-
-
-# ΚΑΘΕ φορά που κάποιος δεν είναι USER ή δεν έχει προηγηθεί login/register as USER - και προσπαθεί να μπει στα παραπάνω endpoints- εμφανίζεται το αντίστοιχο μήνυμα:
-
-![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/58d46f93-e542-4708-8ce7-2c93674cda6f)
 
 
 # 1) Endpoint /create 
