@@ -254,6 +254,7 @@
 
 
 1) Endpoin /create -> Δημιουργία νέας πτήσης από τον admin:
+   Εδώ παρατηρούμε πως φτιάχνουμε στο postman το flight μας και μετά μέσω cmd βλέπουμε πως το flight έχει δημιουργηθεί κανονικά:
 
    ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/f41ef3f0-ac3a-4ac3-8cfb-81032aed5d9a)
 
