@@ -263,6 +263,7 @@
    Εδώ παρατηρούμε πως στο postman , αφού βάλουμε το /price που είναι το endpoint μας, πρέπει να βάλουμε και /id_flight. 
    Παραθέτω την αλλαγή του flight με id 6491bee21d99d41bd1bd5e79. 
    Τα price από 85 και 600 αλλάζουν σε 19 και 21:
+   
    ΠΡΙΝ την αλλαγή:
 
    ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/08b38c0f-56f6-407d-9f44-bc53dbba6fa8)
