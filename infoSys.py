@@ -1,5 +1,6 @@
 from flask import Flask, request, Response, redirect
 import json
+from bson.objectid import ObjectId
 
 from flask import jsonify
 
@@ -308,7 +309,7 @@ def create():
         # Insert the new user into the database
         result2 = flightsC.insert_one(new_flight)
 
-        return jsonify({'message': 'A new flight has been successfully created! '}), 201
+        return jsonify({'message': 'A new flight has been successfully created!', 'New flights id is': str(result2.inserted_id)}), 201
 
     else:
         return "Login as admin First.", 400
@@ -316,13 +317,23 @@ def create():
     
     
 # ENDPOINT FOR UPDATE PRICES
-@app.route('/price', methods=['GET','POST'])
-def price():
+@app.route('/price/<flight_id>', methods=['GET','POST'])
+def price(flight_id):
     global userHelp 
     global adminHelp 
     
     if adminHelp:
-        return "Let's update prices!"
+        # Λαμβάνουμε τα δεδομένα από το json
+        data = request.get_json()
+
+        # Λαμβάνουμε το νέο κόστος των εισιτηρίων από το json
+        new_cost_b = data.get('costB')
+        new_cost_e = data.get('costE')
+
+        # Update the costs in the database for the specific flight
+        flightsC.update_one({'_id': ObjectId(flight_id)}, {'$set': {'costB': new_cost_b, 'costE': new_cost_e}})
+
+        return jsonify({'message': 'Το κόστος των εισιτηρίων ενημερώθηκε με επιτυχία.'}), 200
     
     
     else:
@@ -344,18 +355,51 @@ def delFlight():
         return "Login as admin First."     
     
     
+    
 # ENDPOINT FOR SEARCHING FLIGHTS
 @app.route('/searchFlights', methods=['GET','POST'])
 def searchFlights():
-    global userHelp 
-    global adminHelp 
-    
+    global adminHelp
+    adminHelp = True
+
     if adminHelp:
-        return "Let's search any flight u want!"
-    
-    
+        # Retrieve data from the request
+        data = request.get_json()
+
+        # Retrieve search criteria
+        airport_from = data.get('airportFrom')
+        airport_to = data.get('airportTo')
+        flight_date = data.get('flightDate')
+
+        # Create the search query
+        baseSearch = {}
+
+        if airport_from and airport_to and flight_date:
+            baseSearch = {'airportFrom': airport_from, 'airportTo': airport_to, 'flightDate': flight_date}
+        elif airport_from and airport_to:
+            baseSearch = {'airportFrom': airport_from, 'airportTo': airport_to}
+        elif flight_date:
+            baseSearch = {'flightDate': flight_date}
+        else:
+            baseSearch = {}
+
+        # Perform the search in the database
+        flights = flightsC.find(baseSearch)
+
+        # Prepare the response
+        flight_list = []
+        for flight in flights:
+            flight_data = {
+                '_id': str(flight['_id']),
+                'flightDate': flight['flightDate'],
+                'airportFrom': flight['airportFrom'],
+                'airportTo': flight['airportTo']
+            }
+            flight_list.append(flight_data)
+
+        return jsonify({'flights': flight_list}), 200
     else:
-        return "Login as admin First."      
+        return jsonify({'message': 'Please log in as an admin first.'}), 401    
     
     
 # ENDPOINT FOR SEARCHING DETAILS OF FLIGHTS
