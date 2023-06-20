@@ -145,15 +145,82 @@ def opt():
 # ENDPOINT FOR SEARCHING FLIGHTS (only user)
 @app.route('/srch', methods=['GET','POST'])
 def srch():
-    global userHelp 
-    global adminHelp 
+    global userHelp
     
+
     if userHelp:
-        return "HEY user! Let's search any flight u want!"
-    
-    
+        # Retrieve data from the request
+        data = request.get_json()
+
+        # Retrieve search criteria
+        airport_from = data.get('airportFrom')
+        airport_to = data.get('airportTo')
+        flight_date = data.get('flightDate')
+
+        # Create the search query
+        baseSearch = {}
+
+        if airport_from and airport_to and flight_date:
+            baseSearch = {'airportFrom': airport_from, 'airportTo': airport_to, 'flightDate': flight_date}
+        elif airport_from and airport_to:
+            baseSearch = {'airportFrom': airport_from, 'airportTo': airport_to}
+        elif flight_date:
+            baseSearch = {'flightDate': flight_date}
+        else:
+            baseSearch = {}
+
+        # Perform the search in the database
+        flights = flightsC.find(baseSearch)
+
+        # Prepare the response
+        flight_list = []
+        for flight in flights:
+            flight_data = {
+                '_id': str(flight['_id']),
+                'flightDate': flight['flightDate'],
+                'airportFrom': flight['airportFrom'],
+                'airportTo': flight['airportTo']
+            }
+            flight_list.append(flight_data)
+
+        return jsonify({'flights': flight_list}), 200
     else:
-        return "Login/Register as user First." 
+        return jsonify({'message': 'Please log in as an simple user first.'}), 401  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
 # ENDPOINT FOR DETAILS OF FLIGHTS (only user)
@@ -277,7 +344,7 @@ def opta():
 def create():
     global userHelp 
     global adminHelp 
-    adminHelp = True
+    
     
     if adminHelp:
         
@@ -360,7 +427,7 @@ def delFlight():
 @app.route('/searchFlights', methods=['GET','POST'])
 def searchFlights():
     global adminHelp
-    adminHelp = True
+  
 
     if adminHelp:
         # Retrieve data from the request
@@ -400,6 +467,7 @@ def searchFlights():
         return jsonify({'flights': flight_list}), 200
     else:
         return jsonify({'message': 'Please log in as an admin first.'}), 401    
+    
     
     
 # ENDPOINT FOR SEARCHING DETAILS OF FLIGHTS
