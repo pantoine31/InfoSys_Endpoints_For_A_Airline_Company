@@ -252,10 +252,30 @@
 
 # USER ENDPOINTS ARE HERE:
 
-# 1) 
+# 1) Endpoint /srch
+-> Αναζήτηση πτήσεων από τον user βάση: 
+  - Αεροδρόμιο προέλευσης και αεροδρόμιο τελικού προορισμού
+  - Αεροδρόμιο προέλευσης, αεροδρόμιο τελικού προορισμού και ημερομηνία διεξαγωγής
+  - Ανά ημερομηνία
+  - Εμφάνιση όλων των διαθέσιμων πτήσεων
 
+   Εδώ παρατηρούμε πως στο postman , αφού βάλουμε το /srch που είναι το endpoint μας, πρέπει να βάλουμε και το τρόπο που θέλουμε να αναζητήσουμε.
+   Έστω ότι αναζητούμε με Αεροδρόμιο προέλευσης και αεροδρόμιο τελικού προορισμού.
+   Βλέπουμε πως στο collection flights , μεταξύ άλλων , υπάρχει και η πτήση από parisi προς ellada:
 
-![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/6694f064-acd3-4acc-91bd-c96ef4977269)
+   ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/1a80c865-639b-40b4-8e49-32a5c948c156)
+
+   Κάνουμε την αναζήτηση στο postman και βλέπουμε ότι:
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/9d8d8449-1595-4bea-8f71-edf4b2713c34)
+
+  !Σημείωση!
+  Για την εμφάνιση ΟΛΩΝ των διαθέσιμων πτήσεων εκτελούμε στο postman το ακόλουθο:
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/4d89e5d5-8e69-4521-9e81-5902f4bfe725)
+
+  Αυτό γιατί όταν κανένα από τα πεδία airportFrom, airportTo και flightDate δεν έχει συμπληρωθεί, η συνθήκη είναι αληθής και θα επιστραφούν όλες οι πτήσεις που υπάρχουν στη συλλογή.
+
 
 
 
