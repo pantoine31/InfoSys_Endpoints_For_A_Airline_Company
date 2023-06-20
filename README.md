@@ -258,5 +258,19 @@
    Εδώ παρατηρούμε πως φτιάχνουμε στο postman το flight μας και μετά μέσω cmd βλέπουμε πως το flight έχει δημιουργηθεί κανονικά:
 
    ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/f41ef3f0-ac3a-4ac3-8cfb-81032aed5d9a)
+# 2) Endpoint /price #
+-> Ανανέωση τιμών μίας πτήσης από τον admin βάση του id της πτήσης:
+   Εδώ παρατηρούμε πως στο postman , αφού βάλουμε το /price που είναι το endpoint μας, πρέπει να βάλουμε και /id_flight. 
+   Παραθέτω την αλλαγή του flight με id 6491bee21d99d41bd1bd5e79. 
+   Τα price από 85 και 600 αλλάζουν σε 19 και 21:
+   ΠΡΙΝ την αλλαγή:
 
+   ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/08b38c0f-56f6-407d-9f44-bc53dbba6fa8)
+
+   ΜΕΤΑ την αλλαγή:
+
+   ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/ac528b00-f9b1-4246-b0c3-725854e7a24f)
+
+
+   
 
