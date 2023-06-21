@@ -344,6 +344,9 @@
 
 ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/7443ce17-d59c-437c-91aa-a4827f3131bc)
 
+Έτσι επιστρέφουμε στο cmd , εκτελούμε την ακόλουθη εντολή και παρατηρούμε πως μετά την ακύρωση οι διαθέσιμες θέσεις αυξήθηκαν κατά 1:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/a87b3aea-25cc-4b9c-98d8-f25dc0c284cd)
 
 
 
