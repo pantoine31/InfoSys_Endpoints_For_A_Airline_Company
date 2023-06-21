@@ -338,9 +338,9 @@
 
 ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/a07cf297-f429-4e81-8426-21c1d9e8449f)
 
-Παρατηρούμε πως η πτήση με id 64928ef8e21573aa852a30e2 έχει από διαθεσιμότητα 58 θέσεις economy.
+Παρατηρούμε πως η πτήση με flight id 64928ef8e21573aa852a30e2 και flight id  έχει από διαθεσιμότητα 58 θέσεις economy.
 
-Έστω ότι ο χρήστης που έκανε τη κράτηση με id 6492a9c311f7c64056e912a5 θέλει να την ακυρώσει. Εκτελούμε την ακόλουθη εντολή στο postman και έχουμε:
+Έστω ότι ο χρήστης που έκανε τη κράτηση με reservation id 6492a9c311f7c64056e912a5 θέλει να την ακυρώσει. Εκτελούμε την ακόλουθη εντολή στο postman και έχουμε:
 
 ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/7443ce17-d59c-437c-91aa-a4827f3131bc)
 
