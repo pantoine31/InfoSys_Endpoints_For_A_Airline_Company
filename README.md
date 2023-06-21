@@ -446,4 +446,35 @@
 
 ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/0a74f76d-d43a-45eb-a276-a72b7bc12432)
 
+# 5) Endpoint /Details ( Σωστή σύνταξη /Details/<flight_id>)
+-> Endpoint για την εμφάνιση λεπτομεριών σχετικά με μία πτήση.
+
+ Κάνουμε αναζήτηση στο cmd για να βρούμε όλες τις πτήσεις:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/eec53f3b-be69-4c22-be29-e239434f34f9)
+
+Έστω ότι θέλουμε αυτές τις λεπτομέριες:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/ec82b2a2-edf3-4019-b205-567cbce09d06)
+
+
+--- ΤΕΛΟΣ ΑΝΑΛΥΣΗΣ ENDPOINTS.
+
+Αυτή ήταν - λοιπόν - η υλοποίηση των endpoint μας. 
+Τόσο του απλού user όσο και του admin.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
