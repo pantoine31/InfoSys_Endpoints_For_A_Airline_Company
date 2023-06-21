@@ -324,7 +324,10 @@
 -> Δημιουργία νέας πτήσης από τον admin:
    Εδώ παρατηρούμε πως φτιάχνουμε στο postman το flight μας και μετά μέσω cmd βλέπουμε πως το flight έχει δημιουργηθεί κανονικά:
 
-   ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/f41ef3f0-ac3a-4ac3-8cfb-81032aed5d9a)
+   ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/6d371d4f-92e0-4701-b6c4-eb7fab9b80c6)
+
+   ΠΡΟΣΟΧΗ! Οι τιμές για availableTicketsB": 100, "costB": 85, "availableTicketsE": 60, "costE": 20 παρατηρούμε πως ΔΕΝ είναι μέσα σε εισαγωγικά γιατί θέλουμε να τα περάσουμε ως integers.
+
 # 2) Endpoint /price 
 -> Ανανέωση τιμών μίας πτήσης από τον admin βάση του id της πτήσης:
    Εδώ παρατηρούμε πως στο postman , αφού βάλουμε το /price που είναι το endpoint μας, πρέπει να βάλουμε και /id_flight. 
