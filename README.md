@@ -356,7 +356,16 @@
 
   ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/23b423c7-ea98-431a-81d5-e25427d1d8e9)
 
-Εάν δεν υπάρχει κάποια κράτηση σε αυτό το email εμφανίζεται το αντίστοιχο μήνυμα No reservations for this email:
+Εάν δεν υπάρχει κάποια κράτηση σε αυτό το email εμφανίζεται το αντίστοιχο μήνυμα No reservations for this email.
+
+# 7) Endpoint ResDet (Σωστή σύνταξη /ResDet/<reservation_id>)
+-> Εμφάνιση λεπτομεριών κράτησης βάση του μοναδικού κωδικού κράτησης.
+Παραθέτω παράδειγμα για τη σωστή λειτουργία του εν λόγω endpoint:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/99eca821-0608-402d-b7fc-fc024da95c2c)
+
+Όπως βλέπουμε , στο cmd έχουμε τη κράτηση , και στο postman εμφανίζονται κανονικά όλες οι λεπτομέριες.
+
 
 
 
