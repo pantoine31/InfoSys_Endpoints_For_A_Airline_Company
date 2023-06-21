@@ -147,53 +147,57 @@ def opt():
 # ENDPOINT FOR HOLDING FLIGHTS (only user)
 @app.route('/hold/<flight_id>', methods=['POST'])
 def hold(flight_id):
-     # Take data from the request body in Postman
-    data = request.get_json()
+    global userHelp
+    
+    if userHelp:
+        # Take data from the request body in Postman
+        data = request.get_json()
 
-    # Extract required information from the data
-    firstName = data.get('firstName')
-    lastName = data.get('lastName')
-    passportNumber = data.get('passportNumber')
-    dateOfBirth = data.get('dateOfBirth')
-    email = data.get('email')
-    ticketClass = data.get('ticketClass')
+        # Extract required information from the data
+        firstName = data.get('firstName')
+        lastName = data.get('lastName')
+        passportNumber = data.get('passportNumber')
+        dateOfBirth = data.get('dateOfBirth')
+        email = data.get('email')
+        ticketClass = data.get('ticketClass')
 
-    # Find the flight with the provided flight_id
-    flight = flightsC.find_one({'_id': ObjectId(flight_id)})
+        # Find the flight with the provided flight_id
+        flight = flightsC.find_one({'_id': ObjectId(flight_id)})
 
-    if flight:
-        # Check if the selected ticket class is available
-        if ticketClass == 'business' and flight['availableTicketsB'] > 0:
-            # Reduce the available business tickets count by 1
-            
-            flightsC.update_one({'_id': ObjectId(flight_id)}, {'$set':{'availableTicketsB': (flight['availableTicketsB'] - 1) } })
-            
-        elif ticketClass == 'economy' and int (flight['availableTicketsE']) > 0:
-            
-            # Reduce the available economy tickets count by 1
-            
-            flightsC.update_one({'_id': ObjectId(flight_id)}, {'$set':{'availableTicketsE': int(flight['availableTicketsE']) - 1}})
+        if flight:
+            # Check if the selected ticket class is available
+            if ticketClass == 'business' and flight['availableTicketsB'] > 0:
+                # Reduce the available business tickets count by 1
+                
+                flightsC.update_one({'_id': ObjectId(flight_id)}, {'$set':{'availableTicketsB': (flight['availableTicketsB'] - 1) } })
+                
+            elif ticketClass == 'economy' and int (flight['availableTicketsE']) > 0:
+                
+                # Reduce the available economy tickets count by 1
+                
+                flightsC.update_one({'_id': ObjectId(flight_id)}, {'$set':{'availableTicketsE': int(flight['availableTicketsE']) - 1}})
+            else:
+                return jsonify({'message': 'Selected ticket class is not available.'}), 400
+
+            # Create a new ticket reservation
+            new_reservation = {
+                'flight_id': flight_id,
+                'name': firstName,
+                'surname': lastName,
+                'passport_number': passportNumber,
+                'birth_date': dateOfBirth,
+                'email': email,
+                'ticket_class': ticketClass
+            }
+
+            # Insert the new reservation into the database
+            result = rsvC.insert_one(new_reservation)
+
+            return jsonify({'message': 'Ticket reservation successful!', 'reservation_id': str(result.inserted_id)}), 200
         else:
-            return jsonify({'message': 'Selected ticket class is not available.'}), 400
-
-        # Create a new ticket reservation
-        new_reservation = {
-            'flight_id': flight_id,
-            'name': firstName,
-            'surname': lastName,
-            'passport_number': passportNumber,
-            'birth_date': dateOfBirth,
-            'email': email,
-            'ticket_class': ticketClass
-        }
-
-        # Insert the new reservation into the database
-        result = rsvC.insert_one(new_reservation)
-
-        return jsonify({'message': 'Ticket reservation successful!', 'reservation_id': str(result.inserted_id)}), 200
+            return jsonify({'message': 'Flight not found.'}), 404
     else:
-        return jsonify({'message': 'Flight not found.'}), 404
-
+        return 'Login/Register as simple user first'
     
 
 
