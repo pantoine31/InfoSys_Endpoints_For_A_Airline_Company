@@ -197,7 +197,7 @@ def hold(flight_id):
         else:
             return jsonify({'message': 'Flight not found.'}), 404
     else:
-        return 'Login/Register as simple user first'
+        return 'Login/Register as simple user first', 400
     
 
 
@@ -310,9 +310,9 @@ def reserv(email):
             return jsonify({'Reservations': rsv_list}), 200
         
         else:
-            return 'No reservations for this email'
+            return 'No reservations for this email' , 404
     else:
-        return 'Login as a simple user first'
+        return 'Login as a simple user first', 400
 
 
 # ENDPOINT FOR SHOWING DETAILS OF RESERVATION
@@ -347,7 +347,7 @@ def ResDet(reservation_id):
     
     
     else:
-        return "Login/Register as user First." 
+        return "Login/Register as user First." , 400
     
 
 
@@ -383,7 +383,7 @@ def canF(reservation_id):
                 return jsonify({'message': 'Reservation not found.'}), 404
             
     else:
-        return "Login/Register as user First." 
+        return "Login/Register as user First." , 400
 
 # ENDPOINT FOR DELETE ACCOUNT
 @app.route('/delete/<user_id>', methods=['GET','POST'])
@@ -400,7 +400,7 @@ def delete(user_id):
         else:
             return jsonify({'message': 'User not found.'}), 404
     else:
-        return 'Login or Register as user first'
+        return 'Login or Register as user first' , 400
 
 
 
@@ -426,9 +426,9 @@ def opta():
     global adminHelp 
     
     if adminHelp:
-        return 'Ακολουθεί το μενού επιλογών για τον διαχειριστή του συστήματος:\n\n1. Endpoint για την έξοδο: /exit\n 2. Endpoint για τη δημιουργία πτήσης: /create\n 3. Endpoint για την ανανέωση τιμών: /price\n 4. Endpoint για τη διαγραφή πτήσης: /delFlight\n 5. Endpoint για αναζήτηση πτήσεων: /searchFlights\n 6. Endpoint για εμφάνιση στοιχείων πτήσεων: /Details\n'
+        return 'Ακολουθεί το μενού επιλογών για τον διαχειριστή του συστήματος:\n\n1. Endpoint για την έξοδο: /exit\n 2. Endpoint για τη δημιουργία πτήσης: /create\n 3. Endpoint για την ανανέωση τιμών: /price\n 4. Endpoint για τη διαγραφή πτήσης: /delFlight\n 5. Endpoint για αναζήτηση πτήσεων: /searchFlights\n 6. Endpoint για εμφάνιση στοιχείων πτήσεων: /Details\n' , 400
     else:
-        return 'login as admin First'
+        return 'login as admin First' , 400 
 
 
 
@@ -499,7 +499,7 @@ def price(flight_id):
     
     
     else:
-        return "Login as admin First."    
+        return "Login as admin First." , 400
     
     
     
@@ -521,7 +521,7 @@ def delFlight(flight_id):
         else:
             return jsonify({'message': 'Flight not found.'}), 404
     else:
-        return 'Login or Register as admin first'
+        return 'Login or Register as admin first' , 400
     
     
     
@@ -604,7 +604,7 @@ def Details(flight_id):
         
         
     else:
-        return "Login/Register as admin First." 
+        return "Login/Register as admin First." , 400
     
 
 # ENDPOINT FOR EXIT  (same for USER - ADMIN)
