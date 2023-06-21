@@ -349,6 +349,15 @@
 ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/a87b3aea-25cc-4b9c-98d8-f25dc0c284cd)
 
 
+# 6) Endpoint /reserv 
+-> Εμφάνιση κρατήσεων για τον συγκεκριμένο χρήστη.
+Καθώς το email κάθε χρήστη είναι μοναδικό , η αναζήτηση για κάθε χρήστη γίνεται με το email του.
+Η εντολή είναι η εξής:
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/23b423c7-ea98-431a-81d5-e25427d1d8e9)
+
+Εάν δεν υπάρχει κάποια κράτηση σε αυτό το email εμφανίζεται το αντίστοιχο μήνυμα No reservations for this email:
+
 
 
 #                                                     EndPoints for ADMIN ONLY
