@@ -356,7 +356,16 @@
 
   ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/23b423c7-ea98-431a-81d5-e25427d1d8e9)
 
-Εάν δεν υπάρχει κάποια κράτηση σε αυτό το email εμφανίζεται το αντίστοιχο μήνυμα No reservations for this email:
+Εάν δεν υπάρχει κάποια κράτηση σε αυτό το email εμφανίζεται το αντίστοιχο μήνυμα No reservations for this email.
+
+# 7) Endpoint ResDet (Σωστή σύνταξη /ResDet/<reservation_id>)
+-> Εμφάνιση λεπτομεριών κράτησης βάση του μοναδικού κωδικού κράτησης.
+Παραθέτω παράδειγμα για τη σωστή λειτουργία του εν λόγω endpoint:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/99eca821-0608-402d-b7fc-fc024da95c2c)
+
+Όπως βλέπουμε , στο cmd έχουμε τη κράτηση , και στο postman εμφανίζονται κανονικά όλες οι λεπτομέριες.
+
 
 
 
@@ -422,7 +431,49 @@
 
   Αυτό γιατί όταν κανένα από τα πεδία airportFrom, airportTo και flightDate δεν έχει συμπληρωθεί, η συνθήκη είναι αληθής και θα επιστραφούν όλες οι πτήσεις που υπάρχουν στη συλλογή.
 
- # 4) Endpoint 
+ # 4) Endpoint delFlight (Σωστή σύνταξη delFlight/<reservation_id>)
+ -> Endpoint για την διαγραφή μίας πτήσης.
 
-   
+ Κάνουμε αναζήτηση στο cmd για να βρούμε όλες τις πτήσεις:
+
+ ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/d96c17ab-f145-4f14-acf8-2f66189fb8b6)
+
+Έστω ότι θέλουμε να διαγράψουμε αυτή την πτήση. Θα το κάνουμε έτσι:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/a55be656-b793-4697-95bc-4e221220242d)
+
+Παρατηρούμε, τώρα, πως δεν υπάρχει πλέον η πτήση στη βάση μας / collection μας.
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/0a74f76d-d43a-45eb-a276-a72b7bc12432)
+
+# 5) Endpoint /Details ( Σωστή σύνταξη /Details/<flight_id>)
+-> Endpoint για την εμφάνιση λεπτομεριών σχετικά με μία πτήση.
+
+ Κάνουμε αναζήτηση στο cmd για να βρούμε όλες τις πτήσεις:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/eec53f3b-be69-4c22-be29-e239434f34f9)
+
+Έστω ότι θέλουμε αυτές τις λεπτομέριες:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/ec82b2a2-edf3-4019-b205-567cbce09d06)
+
+
+--- ΤΕΛΟΣ ΑΝΑΛΥΣΗΣ ENDPOINTS.
+
+# Αυτή ήταν - λοιπόν - η υλοποίηση των endpoint μας. Τόσο του απλού user όσο και του admin.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
