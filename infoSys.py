@@ -250,20 +250,13 @@ def srch():
 def det(flight_id):
     global userHelp 
    
-   
 
     if userHelp:
         # Find the flight in the database by its ID
         flight = flightsC.find_one({'_id': ObjectId(flight_id)})
 
-        
-        
-
-        
         if flight:
-            
 
-            
             # Extract flight details
             flight_data = {
                 'flightDate': flight['flightDate'],
@@ -283,36 +276,39 @@ def det(flight_id):
     
     
 # ENDPOINT FOR SHOWING RESEVATIONS  (only user)
-@app.route('/reserv/<user_id>', methods=['GET','POST'])
-def reserv(user_id):
+@app.route('/reserv/<email>', methods=['GET','POST'])
+def reserv(email):
     global userHelp 
-    # Find the reservations for the specified user_id
-    reservations = rsvC.find({'user_id': user_id})
+    
+    if userHelp:
+    
+        # Find the reservations for the specified user_id
+        reservations = rsvC.find({'email': email})
+        
 
-    # Create a list to store the reservation details
-    reservation_list = []
+        if reservations:
+            
+        # Prepare the response
+            rsv_list = []
+            for r in reservations:
+                rsv_data = {
+                    '_id': str(r['_id']),
+                    'flight_id': (r['flight_id']),
+                    'name': (r['name']),
+                    'surname': (r['surname']) ,
+                    'passport_number': (r['passport_number']),
+                    'birth_date': (r['birth_date']),
+                    'email': (r['email']),
+                    'ticket_class':  (r['ticket_class'])
+                }
+                rsv_list.append(rsv_data)
 
-    # Iterate over the reservations and fetch additional flight details
-    for reservation in reservations:
-        # Get the flight details for each reservation
-        flight_id = reservation['flight_id']
-        flight = flightsC.find_one({'_id': ObjectId(user_id)})
-
-        # Add the reservation details and flight details to the list
-        reservation_details = {
-            'reservation_id': str(reservation['_id']),
-            'flight_date': flight['flightDate'],
-            'airport_from': flight['airportFrom'],
-            'airport_to': flight['airportTo'],
-            'ticket_class': reservation['ticket_class']
-        }
-        reservation_list.append(reservation_details)
-
-    return jsonify({'reservations': reservation_list}), 200
-   
-
-
-
+            return jsonify({'Reservations': rsv_list}), 200
+        
+        else:
+            return 'No reservations for this email'
+    else:
+        return 'Login as a simple user first'
 
 
 # ENDPOINT FOR SHOWING DETAILS OF RESERVATION
