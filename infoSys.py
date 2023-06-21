@@ -312,13 +312,34 @@ def reserv(email):
 
 
 # ENDPOINT FOR SHOWING DETAILS OF RESERVATION
-@app.route('/ResDet', methods=['GET','POST'])
-def ResDet():
+@app.route('/ResDet/<reservation_id>', methods=['GET','POST'])
+def ResDet(reservation_id):
     global userHelp 
     global adminHelp 
     
     if userHelp:
-        return "HEY user! Let's show your details of your reservation !"
+        # Find the reservation
+        reservation = rsvC.find_one({'_id': ObjectId(reservation_id)})
+        
+        
+        list = []
+        
+        if reservation:
+
+            # Extract flight details
+            data = {
+                'name': reservation['name'],
+                'surname': reservation['surname'] ,
+                'passport_number':reservation['passport_number'],
+                'birth_date': reservation['birth_date'],
+                'email': reservation['email'],
+                'ticket_class': reservation['ticket_class']
+            }
+        
+
+            list.append(data)
+
+            return jsonify({'Reservation details': list}), 200
     
     
     else:
@@ -479,17 +500,24 @@ def price(flight_id):
     
     
 # ENDPOINT FOR DELETING FLIGHTS
-@app.route('/delFlight', methods=['GET','POST'])
-def delFlight():
-    global userHelp 
+@app.route('/delFlight/<flight_id>', methods=['GET','POST'])
+def delFlight(flight_id):
+    
     global adminHelp 
     
+  
+    
     if adminHelp:
-        return "Let's delete any flight u want!"
     
-    
+        f = flightsC.find_one({'_id': ObjectId(flight_id)})
+        if f:
+            # Delete the flight from the 'flights' collection
+            flightsC.delete_one({'_id': ObjectId(flight_id)})
+            return jsonify({'message': 'Flight deleted successfully.'}), 200
+        else:
+            return jsonify({'message': 'Flight not found.'}), 404
     else:
-        return "Login as admin First."     
+        return 'Login or Register as admin first'
     
     
     
@@ -541,17 +569,39 @@ def searchFlights():
     
     
 # ENDPOINT FOR SEARCHING DETAILS OF FLIGHTS
-@app.route('/Details', methods=['GET','POST'])
-def Details():
-    global userHelp 
+@app.route('/Details/<flight_id>', methods=['GET','POST'])
+def Details(flight_id):
+   
     global adminHelp 
     
     if adminHelp:
-        return "Let's search details for any flight u want!"
-    
-    
+            # Find the reservation
+            fl = flightsC.find_one({'_id': ObjectId(flight_id)})
+            
+            
+            list = []
+            
+            if fl:
+
+                # Extract flight details
+                data = {
+                    'airportFrom': fl['airportFrom'],
+                    'airportTo': fl['airportTo'] ,
+                    'flightDate':fl['flightDate'],
+                    'availableTicketsB': fl['availableTicketsB'],
+                    'availableTicketsE': fl['availableTicketsE'],
+                    'costB': fl['costB'],
+                    'costE': fl['costE']
+                }
+            
+
+                list.append(data)
+
+                return jsonify({'Flight details': list}), 200
+        
+        
     else:
-        return "Login as admin First."  
+        return "Login/Register as admin First." 
     
 
 # ENDPOINT FOR EXIT  (same for USER - ADMIN)
