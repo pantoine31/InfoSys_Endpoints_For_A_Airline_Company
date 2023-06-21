@@ -294,12 +294,25 @@
   # 3) Endpoint /hold
   -> Endpoint για την κράτηση μίας πτήσης από τον χρήστη.
 
-  Παρατηρούμε πως μεταξύ άλλων , στη βάση δεδομένων έχουμε και την πτήση με id 6491c544e64d9b5410088511
+  Παρατηρούμε πως στη βάση δεδομένων έχουμε  την πτήση με id 64928ef8e21573aa852a30e2
 
 
-  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/caa1fa5c-8ced-4e3f-9905-f6beb91fb5dc)
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/60f870f0-2ef2-4558-a4e3-47578c10bf04)
 
+  Έχουμε δηλαδή: 100 διαθέσιμα εισιτήρια για bussiness στη τιμή των 85 ευρώ και 60 εισιτήρια economy στην τιμή των 20 ευρώ.
   Έστω λοιπόν ότι θέλουμε να κάνουμε κράτηση σε αυτή τη πτήση:
+
+  Βλέπουμε , λοιπόν , πως στο postman βάζοντας τις σωστές παραμέτρους η κράτηση γίνεται κανονικά. Κλείσαμε ένα εισιτήριο economy στα παρακάτω στοιχεία.
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/f1f8d717-bb2c-4af3-b529-7f9369d8945e)
+  
+  Πρέπει όμως και από τα διαθέσιμα εισιτήρια economy να αφαιρεθεί ένα αφού έγινε κράτηση άρα έχουμε:
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/9486d451-0732-415e-b0d8-ff8b9d11c385)
+
+  Πολύ σωστά από 60 μειώθηκαν σε 59. Και τέλος , αν δούμε και το collection με τις κρατήσεις μας έχουμε μία κράτηση:
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/37e49488-6232-4384-bbeb-8959ea8271a1)
 
 
 
