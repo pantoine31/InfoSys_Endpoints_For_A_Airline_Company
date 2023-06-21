@@ -292,7 +292,7 @@
   ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/3f959819-dbcf-4e89-816c-8eeb26f308b7)
 
   # 3) Endpoint /hold
-  -> Endpoint για την κράτηση μίας πτήσης από τον χρήστη.
+  -> Endpoint για την κράτηση μίας πτήσης από τον χρήστη και ανανέωση διαθεσιμότητας εισιτηρίων.
 
   Παρατηρούμε πως στη βάση δεδομένων έχουμε  την πτήση με id 64928ef8e21573aa852a30e2
 
@@ -315,6 +315,7 @@
   ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/37e49488-6232-4384-bbeb-8959ea8271a1)
 
  # 4) Endpoint /delete (Σωστή σύνταξη /delete/<user_id>)
+ -> Διαγραφή λογαριασμού
 
  Ανοίγουμε ένα cmd και εκτελούμε την παρακάτω εντολή για να δούμε όλους τους χρήστες που έχουν κάνει resgister στο σύστημα μας.
 
@@ -329,6 +330,19 @@
  Επιστρέφουμε στο cmd , κάνουμε πάλι την ίδια εντολή , εφόσον ο χρήστης ήταν μόνο ένας και έχει διαγραφεί , πλέον το collection usernames είναι κένο:
 
  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/990c7cbf-fd8d-492f-90e7-876f08561c3f)
+
+# 5) Endpoint /canF (Σωστή σύνταξη /canF/<reservation_id>)
+-> Ακύρωση κράτησης και ανανέωση διαθεσιμότητας εισιτηρίων
+
+Ανοίγουμε ένα cmd και εκτελούμε την ακόλουθη εντολή για να δούμε τις πτήσεις και τη διαθεσιμότητα:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/a07cf297-f429-4e81-8426-21c1d9e8449f)
+
+Παρατηρούμε πως η πτήση με id 64928ef8e21573aa852a30e2 έχει από διαθεσιμότητα 58 θέσεις economy.
+
+Έστω ότι ο χρήστης που έκανε τη κράτηση με id 6492a9c311f7c64056e912a5 θέλει να την ακυρώσει. Εκτελούμε την ακόλουθη εντολή στο postman και έχουμε:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/7443ce17-d59c-437c-91aa-a4827f3131bc)
 
 
 
