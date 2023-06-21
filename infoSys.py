@@ -571,7 +571,6 @@ def searchFlights():
         return jsonify({'message': 'Please log in as an admin first.'}), 401    
     
     
-    
 # ENDPOINT FOR SEARCHING DETAILS OF FLIGHTS
 @app.route('/Details/<flight_id>', methods=['GET','POST'])
 def Details(flight_id):
