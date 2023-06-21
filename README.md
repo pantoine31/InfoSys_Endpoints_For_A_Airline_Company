@@ -276,6 +276,78 @@
 
   Αυτό γιατί όταν κανένα από τα πεδία airportFrom, airportTo και flightDate δεν έχει συμπληρωθεί, η συνθήκη είναι αληθής και θα επιστραφούν όλες οι πτήσεις που υπάρχουν στη συλλογή.
 
+# 2) Endpoint /det (Σωστή σύνταξη /det/<flight_id>)
+-> Εμφάνιση λεπτομεριών πτήσεων από τον user βάση το id της κάθε πτήσης:
+
+Για τη πτήση θα πρέπει να εμφανίζεται:
+
+  - η ημερομηνία διεξαγωγής της
+  - το αεροδρόμιο προέλευσης
+  - το αεροδρόμιο τελικού προορισμού
+  - τα διαθέσιμα εισιτήρια (economy και business),
+  - το κόστος των εισιτηρίων για τη κάθε μία από τις δύο κατηγορίες (economy και business).
+
+    Έστω ότι αναζητούμε τη πτήση με id 6491bee21d99d41bd1bd5e79 , θα έχουμε:
+    
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/3f959819-dbcf-4e89-816c-8eeb26f308b7)
+
+  # 3) Endpoint /hold
+  -> Endpoint για την κράτηση μίας πτήσης από τον χρήστη και ανανέωση διαθεσιμότητας εισιτηρίων.
+
+  Παρατηρούμε πως στη βάση δεδομένων έχουμε  την πτήση με id 64928ef8e21573aa852a30e2
+
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/60f870f0-2ef2-4558-a4e3-47578c10bf04)
+
+  Έχουμε δηλαδή: 100 διαθέσιμα εισιτήρια για bussiness στη τιμή των 85 ευρώ και 60 εισιτήρια economy στην τιμή των 20 ευρώ.
+  Έστω λοιπόν ότι θέλουμε να κάνουμε κράτηση σε αυτή τη πτήση:
+
+  Βλέπουμε , λοιπόν , πως στο postman βάζοντας τις σωστές παραμέτρους η κράτηση γίνεται κανονικά. Κλείσαμε ένα εισιτήριο economy στα παρακάτω στοιχεία.
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/f1f8d717-bb2c-4af3-b529-7f9369d8945e)
+  
+  Πρέπει όμως και από τα διαθέσιμα εισιτήρια economy να αφαιρεθεί ένα αφού έγινε κράτηση άρα έχουμε:
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/9486d451-0732-415e-b0d8-ff8b9d11c385)
+
+  Πολύ σωστά από 60 μειώθηκαν σε 59. Και τέλος , αν δούμε και το collection με τις κρατήσεις μας έχουμε μία κράτηση:
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/37e49488-6232-4384-bbeb-8959ea8271a1)
+
+ # 4) Endpoint /delete (Σωστή σύνταξη /delete/<user_id>)
+ -> Διαγραφή λογαριασμού
+
+ Ανοίγουμε ένα cmd και εκτελούμε την παρακάτω εντολή για να δούμε όλους τους χρήστες που έχουν κάνει resgister στο σύστημα μας.
+
+ ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/2764c484-76d0-41a5-bcb1-ce3e5e78e864)
+
+ Παρατηρούμε πως υπάρχει ένας χρήστης μόνο , με id 64908fea7adbab1948986a9a
+
+ Για να διαγράψουμε αυτόν τον λογαριασμό πάμε στο postMan και εκτελούμε την ακόλουθη εντολή:
+
+ ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/7e173e76-8f3d-41e2-ae5a-4385585fe850)
+
+ Επιστρέφουμε στο cmd , κάνουμε πάλι την ίδια εντολή , εφόσον ο χρήστης ήταν μόνο ένας και έχει διαγραφεί , πλέον το collection usernames είναι κένο:
+
+ ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/990c7cbf-fd8d-492f-90e7-876f08561c3f)
+
+# 5) Endpoint /canF (Σωστή σύνταξη /canF/<reservation_id>)
+-> Ακύρωση κράτησης και ανανέωση διαθεσιμότητας εισιτηρίων
+
+Ανοίγουμε ένα cmd και εκτελούμε την ακόλουθη εντολή για να δούμε τις πτήσεις και τη διαθεσιμότητα:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/a07cf297-f429-4e81-8426-21c1d9e8449f)
+
+Παρατηρούμε πως η πτήση με flight id 64928ef8e21573aa852a30e2 και flight id  έχει από διαθεσιμότητα 58 θέσεις economy.
+
+Έστω ότι ο χρήστης που έκανε τη κράτηση με reservation id 6492a9c311f7c64056e912a5 θέλει να την ακυρώσει. Εκτελούμε την ακόλουθη εντολή στο postman και έχουμε:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/7443ce17-d59c-437c-91aa-a4827f3131bc)
+
+Έτσι επιστρέφουμε στο cmd , εκτελούμε την ακόλουθη εντολή και παρατηρούμε πως μετά την ακύρωση οι διαθέσιμες θέσεις αυξήθηκαν κατά 1:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/a87b3aea-25cc-4b9c-98d8-f25dc0c284cd)
+
 
 
 
@@ -300,7 +372,10 @@
 -> Δημιουργία νέας πτήσης από τον admin:
    Εδώ παρατηρούμε πως φτιάχνουμε στο postman το flight μας και μετά μέσω cmd βλέπουμε πως το flight έχει δημιουργηθεί κανονικά:
 
-   ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/f41ef3f0-ac3a-4ac3-8cfb-81032aed5d9a)
+   ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/6d371d4f-92e0-4701-b6c4-eb7fab9b80c6)
+
+   ΠΡΟΣΟΧΗ! Οι τιμές για availableTicketsB": 100, "costB": 85, "availableTicketsE": 60, "costE": 20 παρατηρούμε πως ΔΕΝ είναι μέσα σε εισαγωγικά γιατί θέλουμε να τα περάσουμε ως integers.
+
 # 2) Endpoint /price 
 -> Ανανέωση τιμών μίας πτήσης από τον admin βάση του id της πτήσης:
    Εδώ παρατηρούμε πως στο postman , αφού βάλουμε το /price που είναι το endpoint μας, πρέπει να βάλουμε και /id_flight. 
