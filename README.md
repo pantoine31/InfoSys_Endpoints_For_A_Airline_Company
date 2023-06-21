@@ -314,6 +314,24 @@
 
   ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/37e49488-6232-4384-bbeb-8959ea8271a1)
 
+ # 4) Endpoint /delete (Σωστή σύνταξη /delete/<user_id>)
+
+ Ανοίγουμε ένα cmd και εκτελούμε την παρακάτω εντολή για να δούμε όλους τους χρήστες που έχουν κάνει resgister στο σύστημα μας.
+
+ ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/2764c484-76d0-41a5-bcb1-ce3e5e78e864)
+
+ Παρατηρούμε πως υπάρχει ένας χρήστης μόνο , με id 64908fea7adbab1948986a9a
+
+ Για να διαγράψουμε αυτόν τον λογαριασμό πάμε στο postMan και εκτελούμε την ακόλουθη εντολή:
+
+ ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/7e173e76-8f3d-41e2-ae5a-4385585fe850)
+
+ Επιστρέφουμε στο cmd , κάνουμε πάλι την ίδια εντολή , εφόσον ο χρήστης ήταν μόνο ένας και έχει διαγραφεί , πλέον το collection usernames είναι κένο:
+
+ ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/990c7cbf-fd8d-492f-90e7-876f08561c3f)
+
+
+
 
 
 #                                                     EndPoints for ADMIN ONLY
