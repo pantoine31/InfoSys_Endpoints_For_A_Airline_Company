@@ -142,6 +142,61 @@ def opt():
         return 'You are not a simple user. Register or login as a simple user', 400
 
 
+
+
+# ENDPOINT FOR HOLDING FLIGHTS (only user)
+@app.route('/hold/<flight_id>', methods=['POST'])
+def hold(flight_id):
+     # Take data from the request body in Postman
+    data = request.get_json()
+
+    # Extract required information from the data
+    firstName = data.get('firstName')
+    lastName = data.get('lastName')
+    passportNumber = data.get('passportNumber')
+    dateOfBirth = data.get('dateOfBirth')
+    email = data.get('email')
+    ticketClass = data.get('ticketClass')
+
+    # Find the flight with the provided flight_id
+    flight = flightsC.find_one({'_id': ObjectId(flight_id)})
+
+    if flight:
+        # Check if the selected ticket class is available
+        if ticketClass == 'business' and flight['availableTicketsB'] > 0:
+            # Reduce the available business tickets count by 1
+            
+            flightsC.update_one({'_id': ObjectId(flight_id)}, {'$set':{'availableTicketsB': (flight['availableTicketsB'] - 1) } })
+            
+        elif ticketClass == 'economy' and int (flight['availableTicketsE']) > 0:
+            
+            # Reduce the available economy tickets count by 1
+            
+            flightsC.update_one({'_id': ObjectId(flight_id)}, {'$set':{'availableTicketsE': int(flight['availableTicketsE']) - 1}})
+        else:
+            return jsonify({'message': 'Selected ticket class is not available.'}), 400
+
+        # Create a new ticket reservation
+        new_reservation = {
+            'flight_id': flight_id,
+            'name': firstName,
+            'surname': lastName,
+            'passport_number': passportNumber,
+            'birth_date': dateOfBirth,
+            'email': email,
+            'ticket_class': ticketClass
+        }
+
+        # Insert the new reservation into the database
+        result = rsvC.insert_one(new_reservation)
+
+        return jsonify({'message': 'Ticket reservation successful!', 'reservation_id': str(result.inserted_id)}), 200
+    else:
+        return jsonify({'message': 'Flight not found.'}), 404
+
+    
+
+
 # ENDPOINT FOR SEARCHING FLIGHTS (only user)
 @app.route('/srch', methods=['GET','POST'])
 def srch():
@@ -188,83 +243,78 @@ def srch():
         return jsonify({'message': 'Please log in as an simple user first.'}), 401  
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
 
 # ENDPOINT FOR DETAILS OF FLIGHTS (only user)
-@app.route('/det', methods=['GET','POST'])
-def det():
+@app.route('/det/<flight_id>', methods=['GET','POST'])
+def det(flight_id):
     global userHelp 
-    global adminHelp 
-    
-    if userHelp:
-        return "HEY user! Let's search any detail for any flight u want!"
-    
-    
-    else:
-        return "Login/Register as user First." 
+   
+   
 
-
-# ENDPOINT FOR HOLDING TICKETS (only user)
-@app.route('/hold', methods=['GET','POST'])
-def hold():
-    global userHelp 
-    global adminHelp 
-    
     if userHelp:
-        return "HEY user! Let's hold ticket for any flight u want!"
-    
-    
+        # Find the flight in the database by its ID
+        flight = flightsC.find_one({'_id': ObjectId(flight_id)})
+
+        
+        
+
+        
+        if flight:
+            
+
+            
+            # Extract flight details
+            flight_data = {
+                'flightDate': flight['flightDate'],
+                'airportFrom': flight['airportFrom'],
+                'airportTo': flight['airportTo'],
+                'availableTicketsB': flight['availableTicketsB'],
+                'costB': flight['costB'],
+                'availableTicketsE': flight['availableTicketsE'],
+                'costE': flight['costE']
+            }
+
+            return jsonify({'flight': flight_data}), 200
+        else:
+            return jsonify({'message': 'Flight not found.'}), 404
     else:
-        return "Login/Register as user First." 
+        return jsonify({'message': 'Please log in as an simple user  first.'}), 401
     
     
 # ENDPOINT FOR SHOWING RESEVATIONS  (only user)
-@app.route('/reserv', methods=['GET','POST'])
-def reserv():
+@app.route('/reserv/<user_id>', methods=['GET','POST'])
+def reserv(user_id):
     global userHelp 
-    global adminHelp 
-    
-    if userHelp:
-        return "HEY user! Let's show your reservations!"
-    
-    
-    else:
-        return "Login/Register as user First." 
-    
-    
+    # Find the reservations for the specified user_id
+    reservations = rsvC.find({'user_id': user_id})
+
+    # Create a list to store the reservation details
+    reservation_list = []
+
+    # Iterate over the reservations and fetch additional flight details
+    for reservation in reservations:
+        # Get the flight details for each reservation
+        flight_id = reservation['flight_id']
+        flight = flightsC.find_one({'_id': ObjectId(user_id)})
+
+        # Add the reservation details and flight details to the list
+        reservation_details = {
+            'reservation_id': str(reservation['_id']),
+            'flight_date': flight['flightDate'],
+            'airport_from': flight['airportFrom'],
+            'airport_to': flight['airportTo'],
+            'ticket_class': reservation['ticket_class']
+        }
+        reservation_list.append(reservation_details)
+
+    return jsonify({'reservations': reservation_list}), 200
+   
+
+
+
+
+
 # ENDPOINT FOR SHOWING DETAILS OF RESERVATION
 @app.route('/ResDet', methods=['GET','POST'])
 def ResDet():
@@ -279,33 +329,57 @@ def ResDet():
         return "Login/Register as user First." 
     
 
+
+
+
 # ENDPOINT FOR CANCELING RESERVATION
-@app.route('/canF', methods=['GET','POST'])
-def canF():
+@app.route('/canF/<reservation_id>', methods=['GET','POST'])
+def canF(reservation_id):
     global userHelp 
-    global adminHelp 
+    
     
     if userHelp:
-        return "HEY user! Let's delete any of your reservation !"
-    
-    
+           # Find the reservation
+            reservation = rsvC.find_one({'_id': ObjectId(reservation_id)})
+            if reservation:
+                # Get the flight ID from the reservation
+                flight_id = reservation['flight_id']
+                ticket_class = reservation['ticket_class']
+            
+                # Update the available tickets count for the flight based on the ticket class
+                if ticket_class == 'business':
+                    flightsC.update_one({'_id': ObjectId(flight_id)}, {'$inc': {'availableTicketsB': 1}})
+                elif ticket_class == 'economy':
+                    flightsC.update_one({'_id': ObjectId(flight_id)}, {'$inc': {'availableTicketsE': 1}})
+            
+                # Delete the reservation
+                
+                rsvC.delete_one({'_id': ObjectId(reservation_id)})
+                
+                return jsonify({'message': 'Ticket cancellation successful.'}), 200
+            
+            else:
+                return jsonify({'message': 'Reservation not found.'}), 404
+            
     else:
         return "Login/Register as user First." 
 
 # ENDPOINT FOR DELETE ACCOUNT
-@app.route('/delete', methods=['GET','POST'])
-def delete():
+@app.route('/delete/<user_id>', methods=['GET','POST'])
+def delete(user_id):
     global userHelp 
-    global adminHelp 
     
     if userHelp:
-        return "HEY user! Let's delete your account !"
     
-    
+        user = usersC.find_one({'_id': ObjectId(user_id)})
+        if user:
+            # Delete the user account from the 'usernames' collection
+            usersC.delete_one({'_id': ObjectId(user_id)})
+            return jsonify({'message': 'Account deleted successfully.'}), 200
+        else:
+            return jsonify({'message': 'User not found.'}), 404
     else:
-        return "Login/Register as user First." 
-
-
+        return 'Login or Register as user first'
 
 
 
