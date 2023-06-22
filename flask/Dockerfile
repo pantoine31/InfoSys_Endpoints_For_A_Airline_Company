@@ -8,4 +8,5 @@ COPY infoSys.py /app/infoSys.py
 ADD data /app/data
 EXPOSE 5000
 WORKDIR /app
-ENTRYPOINT ["python", "-u", "infoSys.py"]
+ENTRYPOINT ["python3", "-u", "infoSys.py"]
+
