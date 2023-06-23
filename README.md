@@ -464,16 +464,76 @@
 # Αυτή ήταν - λοιπόν - η υλοποίηση των endpoint μας. Τόσο του απλού user όσο και του admin.
 
 
+# Τέλος ακολουθεί το containerize του web service που δημιουργήσαμε. Αναλύεται παρακάτω:
+
+- Το "containerize" ενός web service αναφέρεται στη διαδικασία μετατροπής ενός web service σε ένα αυτόνομο περιβάλλον που ονομάζεται "container".
+- Ένας container είναι ένα απομονωμένο περιβάλλον εκτέλεσης που περιλαμβάνει όλα τα απαραίτητα εργαλεία, βιβλιοθήκες κλπ που απαιτούνται για να εκτελεστεί ένα web service.
+
+Το web service μας είναι στο αρχείο infoSys.py .
+
+Για να ολοκληρωθεί το containerize πρέπει να ακολουθήσουμε τα ακόλουθα βήματα:
+
+# Βήμα 1:
+
+- Δημιουργία .yml file :
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/a99363b6-47c3-4268-a5b6-90ff0a657256)
+
+# Βήμα 2:
+
+- Δημιουργία Dockerfile :
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/5c28a94f-58e6-472a-8bd0-7ac7a50cd872)
+
+# Βήμα 3:
+
+- Ανοίγουμε cmd , κάνουμε cd στο directory που βρίσκεται το .yml αρχείο και εκτελούμε την εντολή: docker-compose up --build:
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/26956d93-12fd-4ec7-b459-351c2fc17319)
+
+
+  Όπως βλέπουμε , έχει δημιουργηθεί και το conteiner:
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/efb48032-6907-407f-b02b-df116964c3ea)
+
+  Αλλά και τα 2 images που θέλουμε:
+
+  ![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/eb6b9fcb-c6cf-4ab9-9fb7-4dedcc79024e)
+
+
+Τέλος , για να λειτουργήσει όλο το infoSys τώρα , εφόσον αλλάξαμε τη τοποθεσία της βάσης μας πάμε στο infoSys.py και κάνουμε την εξής αλλαγή:
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/b4b0f6c6-bd1c-4ef6-9a35-da2c7a4297f5)
 
 
 
 
 
+Τελικά , βλέπουμε ότι εκτελείται κανονικά η εφαρμογή μας εάν ανοίξουμε το postman. Μερικά παραδείγματα από endpoints παρακάτω:
+
+# 1
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/921483a4-6a28-417a-9a83-73e767d11fae)
+
+
+# 2
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/ec09cc5c-8e05-4b4b-86e8-aae63f9616cc)
+
+# 3
+
+![image](https://github.com/pantoine31/YpoxreotikiErgasia23_E20124_Papakonstantinou_Antonis/assets/85836153/78d64614-9c32-44f3-a385-7b0301f3d825)
 
 
 
 
+Με την ίδια λογική εκτελούνται κανονικά όλα τα endpoints.
 
+Χάρηκα για την συνεργασία. 
+
+Καλό καλοκαίρι με υγεία.
+
+# ΦΟΙΤΗΤΗΣ: ΑΝΤΩΝΗΣ ΠΑΠΑΚΩΝΣΤΑΝΤΙΝΟΥ 2023 / Ε20124
 
 
 
