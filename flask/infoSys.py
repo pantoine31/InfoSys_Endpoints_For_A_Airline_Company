@@ -3,7 +3,7 @@ import json
 from bson.objectid import ObjectId
 
 from flask import jsonify
-
+import os
 import pymongo
 from pymongo import MongoClient
 
@@ -20,7 +20,11 @@ adminPassword = '123321'
 
 app = Flask(__name__)
 
-client = MongoClient('localhost:27017')
+#client = MongoClient('localhost:27017')
+
+
+mongoHostNameForDocker = os.environ.get('MONGO_HOSTNAME')
+client = MongoClient(mongoHostNameForDocker, 27017)
 
 db = client['DigitalAirlines']
 
