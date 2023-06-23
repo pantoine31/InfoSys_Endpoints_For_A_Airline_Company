@@ -3,19 +3,19 @@ services:
   mongodb:
     image: mongo
     restart: always
-    container_name: mongodb
+    container_name: mongodb 
     ports:
-      - 27017:27017
+    - 27017:27017
     volumes:
-      - ./mongodb/data:/data/db
+    - ./mongodb/data:/data/db 
   flask-service:
-    build: 
-      context: ./flask
-    restart: always
-    container_name: flask
-    depends_on:
+    build:
+      context: ./flask 
+    restart: always 
+    container_name: flask 
+    depends_on: 
       - mongodb
     ports:
       - 5000:5000
-    environment:
+    environment: 
       - "MONGO_HOSTNAME=mongodb"
